@@ -1,12 +1,11 @@
-package App;
-
+package ProjetBonPlan.applica;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class HelloWorld {
     @RequestMapping("/")
     public String index() {
-        return "Hello World Spring !";
+        return "Hello World Setyejruktiupring !";
     }
 }
