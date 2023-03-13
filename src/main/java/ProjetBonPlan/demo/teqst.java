@@ -1,0 +1,2 @@
+/*fichier test**/
+/**blablabla */
