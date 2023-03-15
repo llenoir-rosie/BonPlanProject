@@ -1,9 +1,11 @@
-package ProjetBonPlan.repository;
+// package ProjetBonPlan.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+// import java.util.List;
 
-import ProjetBonPlan.model.cities;
-@Repository
-public interface CitiesRepository extends CrudRepository<cities, Long> {
-}
+
+// import ProjetBonPlan.model.cities;
+
+
+// public interface CitiesRepository {
+//     List<cities> findAll();
+// }

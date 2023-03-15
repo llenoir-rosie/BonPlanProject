@@ -1,21 +1,32 @@
 package ProjetBonPlan.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import jakarta.persistence.SequenceGenerator;
+
 @Entity
 @Table(name = "cities")
 public class cities {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+        name="cities_sequence",
+        sequenceName = "cities_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "cities_sequence")
+
     private String name;
-    
-    @Column(name="post_code")
-    private Integer postcode ;
+    private String postcode;
  
-    // getters and setters
+    public cities(String name, String postcode) {
+        this.name = name;
+        this.postcode = postcode;
+    }
 }

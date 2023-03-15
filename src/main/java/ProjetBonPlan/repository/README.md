@@ -1,0 +1,2 @@
+# interaction entre l'application et la base de données ;
+# Une fois que l’entité est créée (class cities), nous devons implémenter le code qui déclenche les actions pour communiquer avec la base de données. Bien évidemment, ce code se servira de notre classe cities.
