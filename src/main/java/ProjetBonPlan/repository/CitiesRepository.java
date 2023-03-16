@@ -1,11 +1,11 @@
-// package ProjetBonPlan.repository;
-
-// import java.util.List;
+package ProjetBonPlan.repository;
 
 
-// import ProjetBonPlan.model.cities;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+import ProjetBonPlan.model.cities;
 
-// public interface CitiesRepository {
-//     List<cities> findAll();
-// }
+@Repository
+public interface CitiesRepository extends JpaRepository<cities, String>{
+}
