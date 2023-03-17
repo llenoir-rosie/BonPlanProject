@@ -10,20 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ProjetBonPlan.model.cities;
-// import ProjetBonPlan.repository.CitiesRepository;
+import ProjetBonPlan.repository.CitiesRepository;
 import ProjetBonPlan.service.CitiesService;
 
 @RestController
-@RequestMapping("/cities")
+//servlet that concern CRUD of cities
 public class CitiesCtrler {
 
-    @Autowired
-    private CitiesService citiesService;
+    @Autowired //if multiple constructor
+    private CitiesRepository citiesRepository;
 
-    @GetMapping
-    public ResponseEntity<List<cities>> getAllCities() {
-        return new ResponseEntity<List<cities>>(citiesService.getAllCities(), HttpStatus.OK);
+    //if HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
+    @GetMapping("/cities")
+    public List<cities> getAllCities() {
+        return citiesRepository.findAll();
     }
+
 }
 // public class CitiesCtrler {
     

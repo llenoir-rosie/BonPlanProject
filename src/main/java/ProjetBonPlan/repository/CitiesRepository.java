@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import ProjetBonPlan.model.cities;
 
+
+//link with Database 
 @Repository
 public interface CitiesRepository extends JpaRepository<cities, String>{
 }
