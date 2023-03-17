@@ -9,7 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 // import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EntityScan("ProjetBonPlan.model.*")  
+@ComponentScan("ProjetBonPlan.*")
+@EnableJpaRepositories(basePackages = { "ProjetBonPlan.*" })
+@EntityScan("ProjetBonPlan.model")  
 @SpringBootApplication
 public class DemoApplication {
 	//implements CommandLineRunner

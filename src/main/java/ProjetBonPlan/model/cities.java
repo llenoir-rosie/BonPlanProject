@@ -1,38 +1,46 @@
 package ProjetBonPlan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+// import javax.persistence.GeneratedValue;
+// import javax.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import org.hibernate.annotations.DialectOverride.ColumnDefault;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 //return class cities definied by name, postcode and description
+
+//@Getter
+// @NoArgsConstructor //constructor with no args
+// @AllArgsConstructor //constructor with all args
 @Entity
-@NoArgsConstructor //constructor with no args
-@AllArgsConstructor //constructor with all args
 @Table(name = "cities")
 public class cities {
 
+      //identify name as the primary key of cities
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private String name;
+
+    @Column
     private String postcode;
+
+    @Column
     private String description;
 
-    @Id  //identify name as the primary key of cities
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-        public String getName() {
-            return name;
-        }
 
-    @Column(name = "description", nullable = false)
+    public String getName() {
+        return name;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    @Column(name = "postcode", nullable = false)
     public String getPostCode() {
         return postcode;
     }
