@@ -27,6 +27,9 @@ public class activites {
     @Column
     private String type;
 
+    @Column
+    private String image;
+
 
     public String getName() {
         return nom;
@@ -34,6 +37,10 @@ public class activites {
 
     public String getDescription() {
         return type;
+    }
+
+    public String getImage(){
+        return image;
     }
 
 
@@ -45,9 +52,12 @@ public class activites {
         this.type = type;
     }
 
+    public void setImage(String image) {
+        this.image=image;
+    }
+
     @Override
     public String toString() {
-        return "cities [nom=" + nom + ", type=" + type  + "]";
+        return "cities [nom=" + nom + ", type=" + type  + ",image=" + image + "]";
     }
-    
 }
