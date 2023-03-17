@@ -1,8 +1,6 @@
 package ProjetBonPlan.model;
 
 import jakarta.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -18,48 +16,38 @@ import lombok.NoArgsConstructor;
 // @NoArgsConstructor //constructor with no args
 // @AllArgsConstructor //constructor with all args
 @Entity
-@Table(name = "cities")
-public class cities {
+@Table(name = "activites")
+public class activites {
 
       //identify name as the primary key of cities
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private String name;
+    private String nom;
 
     @Column
-    private String postcode;
-
-    @Column
-    private String description;
+    private String type;
 
 
     public String getName() {
-        return name;
+        return nom;
     }
 
     public String getDescription() {
-        return description;
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+
+    public void setName(String nom) {
+        this.nom = nom;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "cities [name=" + name + ", postcode=" + postcode + ", description=" + description + "]";
+        return "cities [nom=" + nom + ", type=" + type  + "]";
     }
     
 }
