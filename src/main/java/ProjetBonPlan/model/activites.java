@@ -56,6 +56,8 @@ public class activites {
         this.image=image;
     }
 
+    
+
     @Override
     public String toString() {
         return "cities [nom=" + nom + ", type=" + type  + ",image=" + image + "]";
