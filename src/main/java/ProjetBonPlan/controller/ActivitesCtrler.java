@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ProjetBonPlan.model.cities;
-import ProjetBonPlan.service.CitiesService;
+import ProjetBonPlan.model.activites;
+import ProjetBonPlan.service.ActivitesService;
 
 @RestController
 // @RequestMapping("/api")
 //servlet that concern CRUD of cities
-public class CitiesCtrler {
+public class ActivitesCtrler {
 
     @Autowired //if multiple constructor
-    private CitiesService citiesService;
+    private ActivitesService activitesService;
 
     //if HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
     @CrossOrigin(origins = "*")
-    @GetMapping(path= "/cities")
-    public List<cities> getAllCities() {
-        return citiesService.getAllCities();
-    }
+    @GetMapping(path= "/activites")
+    public List<activites> getAllActivites() {
+        return activitesService.getAllActivites();
+        }
 
 }
