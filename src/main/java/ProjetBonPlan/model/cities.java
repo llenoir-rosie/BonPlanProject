@@ -27,9 +27,6 @@ public class cities {
     private String name;
 
     @Column
-    private String postcode;
-
-    @Column
     private String description;
 
 
@@ -45,21 +42,9 @@ public class cities {
         this.name = name;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
-    public String toString() {
-        return "cities [name=" + name + ", postcode=" + postcode + ", description=" + description + "]";
-    }
     
 }
