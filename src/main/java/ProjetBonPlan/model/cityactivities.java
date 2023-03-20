@@ -16,50 +16,39 @@ import lombok.NoArgsConstructor;
 // @NoArgsConstructor //constructor with no args
 // @AllArgsConstructor //constructor with all args
 @Entity
-@Table(name = "activites")
-public class activites {
+@Table(name = "cityactivities")
+public class cityactivities {
 
       //identify name as the primary key of cities
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private String nom;
+    private Integer id;
     
     @Column
-    private String description;
+    private String city_name;
 
     @Column
-    private String image;
+    private String activity_name;
 
 
-    public String getDescription() {
-        return description;
+    public String getCity() {
+        return city_name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getActivity() {
+        return activity_name;
     }
 
-    public String getName() {
-        return nom;
+    public void setCity(String city_name) {
+        this.city_name = city_name;
     }
 
-    public String getImage(){
-        return image;
+    public void setActivity(String activity_name) {
+        this.activity_name = activity_name;
     }
-
-
-    public void setName(String nom) {
-        this.nom = nom;
-    }
-
-    public void setImage(String image) {
-        this.image=image;
-    }
-
     
-
     @Override
     public String toString() {
-        return "cities [nom=" + nom + ",image=" + image + "description=" + description + "]";
+        return "cities/activities [city=" + city_name + ", activity=" + activity_name  + "]";
     }
 }
