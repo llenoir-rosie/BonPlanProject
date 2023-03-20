@@ -23,20 +23,24 @@ public class activites {
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String nom;
-
+    
     @Column
-    private String type;
+    private String description;
 
     @Column
     private String image;
 
 
-    public String getName() {
-        return nom;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDescription() {
-        return type;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return nom;
     }
 
     public String getImage(){
@@ -48,16 +52,12 @@ public class activites {
         this.nom = nom;
     }
 
-    public void setDescription(String type) {
-        this.type = type;
-    }
-
     public void setImage(String image) {
         this.image=image;
     }
 
     @Override
     public String toString() {
-        return "cities [nom=" + nom + ", type=" + type  + ",image=" + image + "]";
+        return "cities [nom=" + nom + ",image=" + image + "description=" + description + "]";
     }
 }

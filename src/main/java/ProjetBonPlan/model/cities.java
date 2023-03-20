@@ -29,6 +29,8 @@ public class cities {
     @Column
     private String description;
 
+    @Column
+    private String image;
 
     public String getName() {
         return name;
@@ -36,6 +38,10 @@ public class cities {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public void setName(String name) {
