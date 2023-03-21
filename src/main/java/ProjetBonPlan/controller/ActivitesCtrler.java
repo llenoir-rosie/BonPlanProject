@@ -32,12 +32,13 @@ public class ActivitesCtrler {
     public List<activites> getAllActivites() {
         return activitesService.getAllActivites();
         }
-
+    
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(path="activites/precision_activite/{nom}")
     public activites getactivitesByNom(@PathVariable("nom") String nom){
         return activitesService.getactivitesByNom(nom);
     }
-    
+
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(path="/{city}/activites")
     public List<activites> getActivitiesByCity(@PathVariable("city") String city){

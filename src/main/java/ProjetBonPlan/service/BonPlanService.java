@@ -1,19 +1,20 @@
-// package ProjetBonPlan.service;
-// import java.util.List;  
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+package ProjetBonPlan.service;
+import java.util.List;
 
-// import ProjetBonPlan.model.activites;
-// import ProjetBonPlan.model.bonplan;
-// import ProjetBonPlan.repository.ActivitesRepository;
-// import ProjetBonPlan.repository.BonPlanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-// @Service
-// public class BonPlanService {
+import ProjetBonPlan.model.bonplan;
+import ProjetBonPlan.repository.BonPlanRepository;
 
-//     @Autowired
-//     private BonPlanRepository bonplanRepository;
+@Service
+public class BonPlanService {
+
+    @Autowired
+    private BonPlanRepository bonplanRepository;
     
-//     public List<bonplan> getBonPlan(city, activites) {
-//         return bonplanRepository.getBonPlan(city, activites);
-//     }
+    //@return all bonplan of an activity from a city
+    public List<bonplan> getBonPlan(String city, String activity) {
+        return bonplanRepository.findBonPlan(city, activity);
+    }
+}

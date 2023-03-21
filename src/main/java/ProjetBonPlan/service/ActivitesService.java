@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ProjetBonPlan.model.activites;
-import ProjetBonPlan.model.cityactivities;
 import ProjetBonPlan.repository.ActivitesRepository;
 
 @Service

@@ -9,20 +9,31 @@ import jakarta.persistence.Table;
 @Table(name = "bonplan")
 public class bonplan {
     @Id
-    private Long id;
-
-    @Column
     private String name;
 
     @Column 
     private String address;
-    
-    public Long getId() {
-        return id;
+
+    @Column
+    private String activity_type;
+
+    @Column 
+    private String ville_name;
+
+    public String getVille_name() {
+        return ville_name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setVille_name(String ville_name) {
+        this.ville_name = ville_name;
+    }
+
+    public String getActivity_type() {
+        return activity_type;
+    }
+
+    public void setActivity_type(String activity_type) {
+        this.activity_type = activity_type;
     }
 
     public String getName() {
