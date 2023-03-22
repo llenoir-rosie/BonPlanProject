@@ -23,7 +23,7 @@ public class activites {
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String nom;
-
+    
     @Column
     private String description;
 
@@ -34,12 +34,16 @@ public class activites {
     private String type;
 
 
-    public String getName() {
-        return nom;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return nom;
     }
 
     public String getImage(){
@@ -49,10 +53,6 @@ public class activites {
 
     public void setName(String nom) {
         this.nom = nom;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void setImage(String image) {

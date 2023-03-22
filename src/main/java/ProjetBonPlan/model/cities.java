@@ -40,7 +40,7 @@ public class cities {
         return description;
     }
 
-    public String getImage(){
+    public String getImage() {
         return image;
     }
 

@@ -32,21 +32,23 @@ public class ActivitesCtrler {
     private ActivitesService activitesService;
 
     //if HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
-    @CrossOrigin(origins = "*")
-    //affiche toutes les activités de la base de données
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(path= "/activites")
     public List<activites> getAllActivites() {
         return activitesService.getAllActivites();
         }
 
     //envoie le détail pour une activité
+    
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping(path="activites/precision_activite/{nom}")
     public activites getactivitesByNom(@PathVariable("nom") String nom){
         return activitesService.getactivitesByNom(nom);
     }
 
     //envoie toutes les activites d'une ville précisée dans le chemin
-    @GetMapping(path="{city}/activites")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(path="/{city}/activites")
     public List<activites> getActivitiesByCity(@PathVariable("city") String city){
         return activitesService.getActivitiesByCity(city);
     }
