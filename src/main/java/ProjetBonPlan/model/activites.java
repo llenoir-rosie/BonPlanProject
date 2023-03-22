@@ -25,10 +25,13 @@ public class activites {
     private String nom;
 
     @Column
-    private String type;
+    private String description;
 
     @Column
     private String image;
+
+    @Column
+    private String type;
 
 
     public String getName() {
@@ -36,7 +39,7 @@ public class activites {
     }
 
     public String getDescription() {
-        return type;
+        return description;
     }
 
     public String getImage(){
@@ -48,18 +51,22 @@ public class activites {
         this.nom = nom;
     }
 
-    public void setDescription(String type) {
-        this.type = type;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setImage(String image) {
         this.image=image;
     }
 
+    public void setType(String type) {
+        this.type=type;
+    }
+
     
 
     @Override
     public String toString() {
-        return "cities [nom=" + nom + ", type=" + type  + ",image=" + image + "]";
+        return "cities [nom=" + nom + ", description=" + description  + ",image=" + image + ",type=" + type +"]";
     }
 }
