@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import ProjetBonPlan.model.activites;
 import ProjetBonPlan.model.cityactivities;
@@ -59,5 +60,6 @@ public interface ActivitesRepository extends JpaRepository<activites, Long>{
     @Transactional
     public void DeleteActivity(String name);
 
-    
+
+
 }

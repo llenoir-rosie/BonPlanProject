@@ -46,6 +46,7 @@ public class ActivitesService {
         activitesRepository.CreateNewActivity(name, image, description, type);
     }
 
+
     //delete a city
     public void deleteCity(String name){
         activitesRepository.DeleteCity(name);
@@ -54,5 +55,7 @@ public class ActivitesService {
     public void DeleteActivity(String name){
         activitesRepository.DeleteActivity(name);
     }
+
+
 
 }

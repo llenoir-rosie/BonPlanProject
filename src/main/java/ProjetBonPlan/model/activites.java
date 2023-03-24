@@ -50,6 +50,9 @@ public class activites {
         return image;
     }
 
+    public String getType(){
+        return type;
+    }
 
     public void setName(String nom) {
         this.nom = nom;
