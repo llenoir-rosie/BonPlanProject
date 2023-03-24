@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import ProjetBonPlan.model.activites;
-import ProjetBonPlan.model.cityactivities;
 import jakarta.transaction.Transactional;
 import ProjetBonPlan.model.cities;
 

@@ -8,6 +8,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "bonplan")
 public class bonplan {
+
     @Id
     private String name;
 

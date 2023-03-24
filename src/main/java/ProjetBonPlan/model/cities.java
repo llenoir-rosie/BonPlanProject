@@ -6,11 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import org.hibernate.annotations.DialectOverride.ColumnDefault;
 
 import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 //return class cities definied by name, postcode and description
 
