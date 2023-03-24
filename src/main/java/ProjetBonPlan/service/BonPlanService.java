@@ -17,4 +17,20 @@ public class BonPlanService {
     public List<bonplan> getBonPlan(String city, String activity) {
         return bonplanRepository.findBonPlan(city, activity);
     }
+
+    public void createNewBonPlan(String name, String address, String activity_type, String ville_name) {
+        bonplanRepository.CreateNewBonPlan(name,address,activity_type, ville_name);
+    }
+
+    public void deleteThisBonPlan(String name) {
+        bonplanRepository.DeleteThisBonPlan(name);
+    }
+
+    public void updateThisBonPlan(bonplan bonplanobj) {
+        bonplan bonplanFromDb = bonplanRepository.findById(bonplanobj.getName()).get();
+        bonplanFromDb.setAddress("nouvelle address");
+        bonplanFromDb.setActivity_type(bonplanobj.getActivity_type());
+        bonplanFromDb.setVille_name(bonplanobj.getVille_name());
+        bonplanRepository.save(bonplanFromDb);
+    }
 }

@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import ProjetBonPlan.model.activites;
-import ProjetBonPlan.model.cityactivities;
 import jakarta.transaction.Transactional;
 import ProjetBonPlan.model.cities;
 
