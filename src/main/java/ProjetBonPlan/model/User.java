@@ -36,6 +36,9 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private String username;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cascade = CascadeType.ALL
     @JoinTable(
         name = "users_roles", 
@@ -47,13 +50,14 @@ public class User {
     private Collection<Role> roles;
 
     
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email, String password, String username, Collection<Role> roles) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.username = username;
     }
 
     public Long getId() {
@@ -102,6 +106,14 @@ public class User {
 
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }
