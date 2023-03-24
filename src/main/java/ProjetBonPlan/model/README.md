@@ -1,0 +1,1 @@
+# implémentation des objets métiers qui seront manipulés par les autres couches.
