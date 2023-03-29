@@ -17,7 +17,7 @@ import jakarta.annotation.security.PermitAll;
 
 
 @Configuration
-//@EnableWebSecurity
+@EnableWebSecurity
 //extends WebSecurityConfigurerAdapter : deprecated
 public class WebSecurityConfig {
 
@@ -58,6 +58,9 @@ public class WebSecurityConfig {
             "/registration").permitAll()
             .anyRequest().authenticated()
             .and()
+            // .authorizeHttpRequests().requestMatchers(
+            // "/home").hasRole("USER")
+            // .and()
             .formLogin()
             .loginPage("/login.html")
             .permitAll()

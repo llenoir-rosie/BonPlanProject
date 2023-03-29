@@ -31,12 +31,13 @@ public class LoginCtl {
     /*@PostMapping( consumes = MediaType.APPLICATION_JSON_VALUE,
                     produces = MediaType.APPLICATION_JSON_VALUE)*/
     
-    String username = "uu";
     
-    @PostMapping("/checkuser")
-    public UserDetails test_login(String username){
+    
+    @PostMapping(path = "/checkuser")
+    public org.springframework.security.core.userdetails.User test_login(String username){
+        username = "test";
 
-        UserDetails user = userServiceImpl.loadUserByUsername(username);
+        org.springframework.security.core.userdetails.User user = userServiceImpl.loadUserByUsername(username);
         return user;
     }
     
