@@ -22,13 +22,13 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    // @ModelAttribute("user")
-    // public UserRegistrationDto userRegistrationDto() {
-    //     return new UserRegistrationDto();
-    // }
+    @ModelAttribute("user")
+    public UserRegistrationDto userRegistrationDto() {
+        return new UserRegistrationDto(null, null, null, null, null);
+    }
+
     @GetMapping
-    public String showRegistrationForm() {  //Model model
-        // model.addAttribute("user", new UserRegistrationDto())
+    public String showRegistrationForm() {
         return "registration";
     }
 
