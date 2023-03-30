@@ -4,9 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ProjetBonPlan.model.activites;
 import ProjetBonPlan.model.cities;
 import ProjetBonPlan.service.CitiesService;
 
@@ -16,13 +21,56 @@ import ProjetBonPlan.service.CitiesService;
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class CitiesCtrler {
 
-    @Autowired //if multiple constructor
+    @Autowired //If multiple constructor
     private CitiesService citiesService;
 
-    //if HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
+    //If HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
+    //@return All city (cities.java)
     @GetMapping(path= "/cities")
     public List<cities> getAllCities() {
         return citiesService.getAllCities();
     }
+
+    //@return all cities which have the activity (activity) (name of the activity in the path)
+    @GetMapping(path="villes/{activity}")
+    public List<cities> getCitiesbyActivity(@PathVariable("activity") String activity){
+        return citiesService.getCitiesbyActivity(activity);
+    }
+
+    //Create a new city (cities.java), return false if the name already exist
+    @PostMapping(path="/city/new")
+        public void createNewCity(String cityname,String description,String image){
+        String villeAajouter="Lille";
+        String DescriptionVille="description de Lille";
+        String ImageVille="../assets/img/lille.jfif";
+        try{
+            citiesService.createNewCity(villeAajouter,DescriptionVille,ImageVille);
+        }catch(Exception e){
+            System.out.println("Cette ville existe deja dans la base de donnees");
+        }
+        
+    }
+
+    //Delete the city, return false if user doesn't have the rights
+    @DeleteMapping(path="city/delete")
+    public void deleteCity(String name){
+        name = "Lille";
+        try{
+            citiesService.deleteCity(name);
+        }catch (Exception e){
+            System.out.println("la ville ne peut pas etre supprimee");//affiche pas le message?
+        }
+    }
+
+    //Update a City (cities.java), return false if the city can't be updated
+    @PutMapping(path="city/update")
+    public void updateActivity(cities cityToUpdate) {
+        try{
+            citiesService.updateCity(cityToUpdate);
+        } catch (Exception e) {
+            System.out.println("l activite ne peut pas etre mise à jour");
+        }
+    }
+
 
 }

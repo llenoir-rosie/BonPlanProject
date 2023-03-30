@@ -19,7 +19,7 @@ public class activites {
       //identify name as the primary key of cities
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private String nom;
+    private String name;
     
     @Column
     private String description;
@@ -27,43 +27,32 @@ public class activites {
     @Column
     private String image;
 
-    @Column
-    private String type;
-
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getName() {
-        return nom;
+        return name;
     }
 
     public String getImage(){
         return image;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public void setName(String nom) {
-        this.nom = nom;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setImage(String image) {
         this.image=image;
     }
 
-    public void setType(String type) {
-        this.type=type;
-    }
-
-    
-
     @Override
     public String toString() {
-        return "cities [nom=" + nom + ", description=" + description  + ",image=" + image + ",type=" + type +"]";
+        return "cities [nom=" + name + ", description=" + description  + ",image=" + image +"]";
     }
 }
