@@ -18,8 +18,8 @@ public class BonPlanService {
         return bonplanRepository.findBonPlan(city, activity);
     }
 
-    public void createNewBonPlan(String name, String address, String activity_type, String ville_name) {
-        bonplanRepository.CreateNewBonPlan(name,address,activity_type, ville_name);
+    public void createNewBonPlan(bonplan newBonPlan) {
+        bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(), newBonPlan.getVille_name());
     }
 
     public void deleteThisBonPlan(String name) {

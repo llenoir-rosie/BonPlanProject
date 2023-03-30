@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import ProjetBonPlan.model.activites;
-import ProjetBonPlan.model.cities;
 import ProjetBonPlan.service.ActivitesService;
 
 
@@ -24,54 +24,27 @@ public class ActivitesCtrler {
     @Autowired //if multiple constructor
     private ActivitesService activitesService;
 
-    //if HTTP request equals getAllCities promising a response of List of city in localhost://8080/cities
+    //If HTTP request equals getAllCities promising a response of List of city in localhost://8080/activites
+    //@return All activity (activites.java)
     @GetMapping(path= "/activites")
     public List<activites> getAllActivites() {
         return activitesService.getAllActivites();
         }
 
-    //envoie le détail pour une activité
-    
-
-    @GetMapping(path="activites/precision_activite/{nom}")
+    //@return an activity (acitivities.java) selected by its props activity.name
+    @GetMapping(path="activites/{nom}")
     public activites getactivitesByNom(@PathVariable("nom") String nom){
         return activitesService.getactivitesByNom(nom);
     }
 
-    //envoie toutes les activites d'une ville précisée dans le chemin
+    //@return All Activities of a city (name of the city in the path)
     @GetMapping(path="/{city}/activites")
     public List<activites> getActivitiesByCity(@PathVariable("city") String city){
         return activitesService.getActivitiesByCity(city);
     }
 
-    //envoie toutes les villes disposant de l'activité précisée dans le chemin
-    @GetMapping(path="villes/{activity}")
-    public List<cities> getCitiesbyActivity(@PathVariable("activity") String activity){
-        return activitesService.getCitiesbyActivity(activity);
-    }
-    /* 
-    private String cityname="Lille";
-    private String description="description de Lille";
-    private String image="../assets/img/lille.jfif";*/
-
-    //ajoute une nouvelle ville dans la base de donées si elle n existe pas encore
-    @PostMapping(path="/city/new")
-    //public void createNewCity(@RequestBody String villeAajouter,String DescriptionVille,String ImageVille){
-     public void createNewCity(String cityname,String description,String image){
-        String villeAajouter="Lille";
-        String DescriptionVille="description de Lille";
-        String ImageVille="../assets/img/lille.jfif";
-        try{
-            activitesService.createNewCity(villeAajouter,DescriptionVille,ImageVille);
-        }catch(Exception e){
-            System.out.println("Cette ville existe deja dans la base de donnees");
-        }
-        
-    }
-
-    //ajoute une nouvelle activité à la base de données si elle n existe pas encore
+    //Create a new activity of type activity, return false if name already exist
     @PostMapping(path="/activite/new")
-    //public void createNewActivity(String act_name,String act_image, String act_description, String act_type)
     public void createNewActivity(String name, String image, String description, String type){
         String act_name = "basket";
         String act_description = "le basket c'est cool";
@@ -82,19 +55,9 @@ public class ActivitesCtrler {
         }catch (Exception e){
             System.out.println("Cette activite a deja ete ajoutee");
         }
-       
     }
 
-    @DeleteMapping(path="city/delete")
-    public void deleteCity(String name){
-        name = "Lille";
-        try{
-            activitesService.deleteCity(name);
-        }catch (Exception e){
-            System.out.println("la ville ne peut pas etre supprimee");//affiche pas le message?
-        }
-    }
-
+    //Delete the activity, return false if user doesn't have the rights
     @DeleteMapping(path="activite/delete")
     public void DeleteActivity(String name){
         name = "basket";
@@ -102,6 +65,16 @@ public class ActivitesCtrler {
             activitesService.DeleteActivity(name);
         }catch (Exception e){
             System.out.println("l activite ne peut pas etre supprimee");//afficher pas le message?
+        }
+    }
+
+    //Update an Activity (activites.java), return false if the activity can't be updated
+    @PutMapping(path="/activite/update")
+    public void updateActivity(activites act) {
+        try{
+            activitesService.updateActivity(act);
+        } catch (Exception e) {
+            System.out.println("l activite ne peut pas etre mise à jour");
         }
     }
 

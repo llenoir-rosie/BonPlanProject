@@ -52,6 +52,4 @@ public class bonplan {
     public void setAddress(String address) {
         this.address = address;
     }
-
-
 }

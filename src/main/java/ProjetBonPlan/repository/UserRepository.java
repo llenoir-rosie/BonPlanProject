@@ -7,8 +7,10 @@ import ProjetBonPlan.model.User;
  
  
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, String> {
  
+    public User findByEmail(String email);
+    public User findByEmailAndPassword(String email, String password);
     // User findByEmail(String email);
  
     // boolean existsByEmail(String email);

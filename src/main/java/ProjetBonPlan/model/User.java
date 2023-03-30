@@ -20,16 +20,13 @@ import jakarta.persistence.UniqueConstraint;
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
 
+    @Id
     @Column
     private String email;
 
@@ -39,33 +36,30 @@ public class User {
     @Column
     private String username;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cascade = CascadeType.ALL
-    @JoinTable(
-        name = "users_roles", 
-        joinColumns = @JoinColumn(
-            name = "user_id", referencedColumnName = "id" ), 
-        inverseJoinColumns = @JoinColumn(
-            name = "role_id", referencedColumnName = "id"))
+    @Column 
+    private String role;
 
-    private Collection<Role> roles;
+    // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cascade = CascadeType.ALL
+    // @JoinTable(
+    //     name = "users_roles", 
+    //     joinColumns = @JoinColumn(
+    //         name = "user_id", referencedColumnName = "id" ), 
+    //     inverseJoinColumns = @JoinColumn(
+    //         name = "role_id", referencedColumnName = "id"))
+
+    // private Collection<Role> roles;
 
     
-    public User(String firstName, String lastName, String email, String password, String username, Collection<Role> roles) {
-        super();
+    public User(String firstName, String lastName, String email, String password, String username, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
         this.username = username;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public User() {
     }
 
     public String getFirstName() {
@@ -100,20 +94,20 @@ public class User {
         this.password = password;
     }
 
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
-
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
 }
