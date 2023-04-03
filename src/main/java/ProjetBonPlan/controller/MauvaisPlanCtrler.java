@@ -50,7 +50,7 @@ public class MauvaisPlanCtrler {
     }
 
     //Delete a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activites.java) of a city (cities.java)
-    @DeleteMapping(path= "/{city}/{activites}/{name}")
+    @DeleteMapping(path= "/{city}/{activites}/{name}/deletemauvaisplan")
     public void deleteMauvaisPlan(@PathVariable("name") String name) {
         mauvaisplanService.deleteThisMauvaisPlan(name);
     }
