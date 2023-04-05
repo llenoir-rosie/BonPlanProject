@@ -55,8 +55,10 @@ public class BonPlanCtrler {
     }
 
     //Update a Bon plan (bonplan.java) embedded in a particular activity (activites.java) of a city (cities.java)
-    @PutMapping(path= "/{city}/{activites}/updatebonplan")
-    public void updateBonPlan(bonplan upBonPlan) {
+    @PutMapping(path= "/{city}/{activites}/updatebonplan", 
+    consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateBonPlan(@RequestBody bonplan upBonPlan) {
         bonplanService.updateThisBonPlan(upBonPlan);
     }
 }

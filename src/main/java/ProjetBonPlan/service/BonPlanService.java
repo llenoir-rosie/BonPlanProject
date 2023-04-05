@@ -28,7 +28,8 @@ public class BonPlanService {
 
     public void updateThisBonPlan(bonplan bonplanobj) {
         bonplan bonplanFromDb = bonplanRepository.findById(bonplanobj.getName()).get();
-        bonplanFromDb.setAddress("nouvelle address");
+        
+        bonplanFromDb.setAddress(bonplanobj.getAddress());
         bonplanFromDb.setActivity_type(bonplanobj.getActivity_type());
         bonplanFromDb.setVille_name(bonplanobj.getVille_name());
         bonplanRepository.save(bonplanFromDb);
