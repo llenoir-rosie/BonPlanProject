@@ -29,16 +29,16 @@ public class MauvaisPlanCtrler {
     @Autowired //if multiple constructor
     private MauvaisPlanService mauvaisplanService;
 
-    //@return All Mauvaiss Plans (mauvaisplan.java) that concern an activity (activites.java) of a city (cities.java)
-    @GetMapping(path= "/{city}/{activites}/mauvaisplan")
-    public ResponseEntity<List<mauvaisplan>> getMauvaisPlan(@PathVariable("city") String city, @PathVariable("activites") String activity) {
+    //@return All Mauvaiss Plans (mauvaisplan.java) that concern an activity (activity.java) of a city (cities.java)
+    @GetMapping(path= "/{city}/{activity}/mauvaisplan")
+    public ResponseEntity<List<mauvaisplan>> getMauvaisPlan(@PathVariable("city") String city, @PathVariable("activity") String activity) {
         List<mauvaisplan> allBP = mauvaisplanService.getMauvaisPlan(city, activity);
         return new ResponseEntity<>(allBP, HttpStatus.OK);
         }
     
-    //Create a new Mauvais Plan (mauvaisplan.java) embedded in a particular activity (activites.java) of a city (cities.java)
+    //Create a new Mauvais Plan (mauvaisplan.java) embedded in a particular activity (activity.java) of a city (cities.java)
     //A refaire avec un post de l'objet et pas de ses variables séparemments
-    @PostMapping(path= "/{city}/{activites}/newmauvaisplan", 
+    @PostMapping(path= "/{city}/{activity}/newmauvaisplan", 
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void postMauvaisPlan(@RequestBody mauvaisplan newMauvaisPlan) {
@@ -49,14 +49,14 @@ public class MauvaisPlanCtrler {
         mauvaisplanService.createNewMauvaisPlan(newMauvaisPlan);
     }
 
-    //Delete a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activites.java) of a city (cities.java)
-    @DeleteMapping(path= "/{city}/{activites}/{name}/deletemauvaisplan")
+    //Delete a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activity.java) of a city (cities.java)
+    @DeleteMapping(path= "/{city}/{activity}/{name}/deletemauvaisplan")
     public void deleteMauvaisPlan(@PathVariable("name") String name) {
         mauvaisplanService.deleteThisMauvaisPlan(name);
     }
 
-    //Update a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activites.java) of a city (cities.java)
-    @PutMapping(path= "/{city}/{activites}/updatemauvaisplan")
+    //Update a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activity.java) of a city (cities.java)
+    @PutMapping(path= "/{city}/{activity}/updatemauvaisplan")
     public void updateMauvaisPlan(mauvaisplan upMauvaisPlan) {
         mauvaisplanService.updateThisMauvaisPlan(upMauvaisPlan);
     }

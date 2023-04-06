@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ProjetBonPlan.model.activites;
+import ProjetBonPlan.model.activity;
 import ProjetBonPlan.model.cities;
 import ProjetBonPlan.service.CitiesService;
 

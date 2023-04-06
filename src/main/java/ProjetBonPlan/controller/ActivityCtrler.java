@@ -11,68 +11,68 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import ProjetBonPlan.model.activites;
-import ProjetBonPlan.service.ActivitesService;
+import ProjetBonPlan.model.activity;
+import ProjetBonPlan.service.ActivityService;
 
 
 @RestController
 // @RequestMapping("/api")
 //servlet that concern CRUD of activities
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
-public class ActivitesCtrler {
+public class ActivityCtrler {
 
     @Autowired //if multiple constructor
-    private ActivitesService activitesService;
+    private ActivityService activityService;
 
-    //If HTTP request equals getAllCities promising a response of List of city in localhost://8080/activites
-    //@return All activity (activites.java)
-    @GetMapping(path= "/activites")
-    public List<activites> getAllActivites() {
-        return activitesService.getAllActivites();
+    //If HTTP request equals getAllCities promising a response of List of city in localhost://8080/activity
+    //@return All activity (activity.java)
+    @GetMapping(path= "/activity")
+    public List<activity> getAllActivity() {
+        return activityService.getAllActivity();
         }
 
     //@return an activity (acitivities.java) selected by its props activity.name
-    @GetMapping(path="activites/{nom}")
-    public activites getactivitesByNom(@PathVariable("nom") String nom){
-        return activitesService.getactivitesByNom(nom);
+    @GetMapping(path="activity/{nom}")
+    public activity getActivityByNom(@PathVariable("nom") String nom){
+        return activityService.getActivityByNom(nom);
     }
 
     //@return All Activities of a city (name of the city in the path)
     @GetMapping(path="/{city}/activites")
-    public List<activites> getActivitiesByCity(@PathVariable("city") String city){
-        return activitesService.getActivitiesByCity(city);
+    public List<activity> getActivitiesByCity(@PathVariable("city") String city){
+        return activityService.getActivitiesByCity(city);
     }
 
     //Create a new activity of type activity, return false if name already exist
-    @PostMapping(path="/activite/new")
+    @PostMapping(path="/activity/new")
     public void createNewActivity(String name, String image, String description, String type){
         String act_name = "basket";
         String act_description = "le basket c'est cool";
         String act_image = "../assets/img/basket.jfif";
         String act_type = "sport";
         try{
-            activitesService.createNewActivity(act_name, act_image, act_description, act_type);
+            activityService.createNewActivity(act_name, act_image, act_description, act_type);
         }catch (Exception e){
             System.out.println("Cette activite a deja ete ajoutee");
         }
     }
 
     //Delete the activity, return false if user doesn't have the rights
-    @DeleteMapping(path="activite/delete")
+    @DeleteMapping(path="activity/delete")
     public void DeleteActivity(String name){
         name = "basket";
         try{
-            activitesService.DeleteActivity(name);
+            activityService.DeleteActivity(name);
         }catch (Exception e){
             System.out.println("l activite ne peut pas etre supprimee");//afficher pas le message?
         }
     }
 
-    //Update an Activity (activites.java), return false if the activity can't be updated
-    @PutMapping(path="/activite/update")
-    public void updateActivity(activites act) {
+    //Update an Activity (activity.java), return false if the activity can't be updated
+    @PutMapping(path="/activity/update")
+    public void updateActivity(activity act) {
         try{
-            activitesService.updateActivity(act);
+            activityService.updateActivity(act);
         } catch (Exception e) {
             System.out.println("l activite ne peut pas etre mise à jour");
         }
