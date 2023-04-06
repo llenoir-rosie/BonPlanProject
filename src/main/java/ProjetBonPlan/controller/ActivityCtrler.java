@@ -26,7 +26,7 @@ public class ActivityCtrler {
 
     //If HTTP request equals getAllCities promising a response of List of city in localhost://8080/activity
     //@return All activity (activity.java)
-    @GetMapping(path= "/activity")
+    @GetMapping(path= "/activities")
     public List<activity> getAllActivity() {
         return activityService.getAllActivity();
         }
