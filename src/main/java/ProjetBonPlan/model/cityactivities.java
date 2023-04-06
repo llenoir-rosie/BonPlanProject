@@ -27,6 +27,13 @@ public class cityactivities {
     @Column
     private String activity_name;
 
+    
+
+    public cityactivities(Integer id, String city_name, String activity_name) {
+        this.id = id;
+        this.city_name = city_name;
+        this.activity_name = activity_name;
+    }
 
     public String getCity() {
         return city_name;

@@ -33,4 +33,8 @@ public class BonPlanService {
         bonplanFromDb.setVille_name(bonplanobj.getVille_name());
         bonplanRepository.save(bonplanFromDb);
     }
+
+    public Integer count(String city, String activites) {
+        return bonplanRepository.countbonplan(city, activites);
+    }
 }

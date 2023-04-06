@@ -28,8 +28,8 @@ public class ActivitesService {
     
 
     //insert une nouvelle activité dans la table activités
-    public void createNewActivity(String name,String image, String description, String type){
-        activitesRepository.CreateNewActivity(name, image, description, type);
+    public void createNewActivity(String name,String image, String description){
+        activitesRepository.CreateNewActivity(name, image, description);
     }
 
     public void DeleteActivity(String name){

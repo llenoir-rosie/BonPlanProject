@@ -3,6 +3,7 @@ package ProjetBonPlan.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import ProjetBonPlan.model.activites;
 import ProjetBonPlan.service.ActivitesService;
@@ -44,30 +46,31 @@ public class ActivitesCtrler {
     }
 
     //Create a new activity of type activity, return false if name already exist
-    @PostMapping(path="/activite/new")
-    public void createNewActivity(String name, String image, String description, String type){
-        String act_name = "basket";
-        String act_description = "le basket c'est cool";
-        String act_image = "../assets/img/basket.jfif";
-        String act_type = "sport";
+    @PostMapping(path="/activite/new", consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void createNewActivity(@RequestBody activites activite){
+        
+        String act_name = activite.getName();
+        String act_description = activite.getDescription();
+        String act_image = activite.getImage();
+
         try{
-            activitesService.createNewActivity(act_name, act_image, act_description, act_type);
+            activitesService.createNewActivity(act_name, act_image, act_description);
         }catch (Exception e){
             System.out.println("Cette activite a deja ete ajoutee");
         }
     }
 
     //Delete the activity, return false if user doesn't have the rights
-    @DeleteMapping(path="activite/delete")
-    public void DeleteActivity(String name){
-        name = "basket";
+    @DeleteMapping(path="activite/delete", consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void DeleteActivity(@RequestBody String name){
         try{
             activitesService.DeleteActivity(name);
         }catch (Exception e){
             System.out.println("l activite ne peut pas etre supprimee");//afficher pas le message?
         }
     }
-
     //Update an Activity (activites.java), return false if the activity can't be updated
     @PutMapping(path="/activite/update")
     public void updateActivity(activites act) {

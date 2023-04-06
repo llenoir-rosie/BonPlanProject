@@ -34,7 +34,7 @@ public interface ActivitesRepository extends JpaRepository<activites, Long>{
     @Query("INSERT INTO activites (name,image,description) values (?1,?2,?3)")
     //@Query("INSERT INTO activites (nom,image,description) values (?1,?2,?3) ON CONFLICT (nom) DO NOTHING")
     @Transactional
-    public void CreateNewActivity(String name, String image, String description, String type);
+    public void CreateNewActivity(String name, String image, String description);
 
     @Modifying
     @Query("DELETE FROM activites WHERE name=?1 and ?1 NOT IN (select activity_name FROM cityactivities)")
