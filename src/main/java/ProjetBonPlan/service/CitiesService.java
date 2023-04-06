@@ -32,7 +32,7 @@ public class CitiesService {
         citiesRepository.DeleteCity(name);
     }
 
-    //Action that update an activity(activites.java) act 
+    //Action that update an activity(activity.java) act 
     public void updateCity(cities cityToUpdate) {
         cities cityFromDb = citiesRepository.findByName(cityToUpdate.getName());
         cityFromDb.setName(cityToUpdate.getName());

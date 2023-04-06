@@ -8,41 +8,41 @@ import ProjetBonPlan.model.activity;
 import ProjetBonPlan.repository.ActivityRepository;
 
 @Service
-public class ActivitesService {
+public class ActivityService {
 
     @Autowired
-    private ActivityRepository activitesRepository;
+    private ActivityRepository activityRepository;
     
-    public List<activity> getAllActivites() {
-        return activitesRepository.findAll();
+    public List<activity> getAllActivity() {
+        return activityRepository.findAll();
     }
 
-    public activity getactivitesByNom(String nom){
-        return activitesRepository.findByActivity(nom);
+    public activity getActivityByNom(String nom){
+        return activityRepository.findByActivity(nom);
     }
 
     //renvoie la liste des activités possibles dans une ville
     public List<activity> getActivitiesByCity(String city){
-        return activitesRepository.findByCityActivities(city);
+        return activityRepository.findByCityActivities(city);
     }
     
 
     //insert une nouvelle activité dans la table activités
     public void createNewActivity(String name,String image, String description){
-        activitesRepository.CreateNewActivity(name, image, description);
+        activityRepository.CreateNewActivity(name, image, description);
     }
 
     public void DeleteActivity(String name){
-        activitesRepository.DeleteActivity(name);
+        activityRepository.DeleteActivity(name);
     }
 
-    //Action that update an activity(activites.java) act 
+    //Action that update an activity(activity.java) act 
     public void updateActivity(activity act) {
-        activity activityFromDb = activitesRepository.findByActivity(act.getName());
+        activity activityFromDb = activityRepository.findByActivity(act.getName());
         activityFromDb.setName(act.getName());
         activityFromDb.setDescription("nouvelle description hahaha");
         activityFromDb.setImage(act.getImage());
-        activitesRepository.save(activityFromDb);
+        activityRepository.save(activityFromDb);
         //activityFromDb.updateActivity(act);
     }
 

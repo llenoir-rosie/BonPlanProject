@@ -13,8 +13,8 @@ import jakarta.persistence.Column;
 // @NoArgsConstructor //constructor with no args
 // @AllArgsConstructor //constructor with all args
 @Entity
-@Table(name = "activites")
-public class activites {
+@Table(name = "activity")
+public class activity {
 
       //identify name as the primary key of cities
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
