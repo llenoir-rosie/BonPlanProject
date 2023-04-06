@@ -27,5 +27,8 @@ public interface BonPlanRepository extends JpaRepository<bonplan, String>{
     @Query("DELETE FROM bonplan WHERE name = ?1")
     @Transactional
     public void DeleteThisBonPlan(String name);
+
+    @Query("SELECT COUNT(*) from bonplan where ville_name=?1 and activity_type=?2")
+    public Integer countbonplan(String city, String activites);
 }
 

@@ -61,4 +61,11 @@ public class BonPlanCtrler {
     public void updateBonPlan(@RequestBody bonplan upBonPlan) {
         bonplanService.updateThisBonPlan(upBonPlan);
     }
+
+    //Count bonplan
+    @GetMapping(path="/{city}/{activites}/countbonplan", 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer count(@PathVariable ("city") String city, @PathVariable ("activites") String activites){
+        return bonplanService.count(city, activites);
+    }
 }
