@@ -56,8 +56,10 @@ public class MauvaisPlanCtrler {
     }
 
     //Update a Mauvais plan (mauvaisplan.java) embedded in a particular activity (activity.java) of a city (cities.java)
-    @PutMapping(path= "/{city}/{activity}/updatemauvaisplan")
-    public void updateMauvaisPlan(mauvaisplan upMauvaisPlan) {
+    @PutMapping(path= "/{city}/{activity}/updatemauvaisplan", 
+    consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateMauvaisPlan(@RequestBody mauvaisplan upMauvaisPlan) {
         mauvaisplanService.updateThisMauvaisPlan(upMauvaisPlan);
     }
 

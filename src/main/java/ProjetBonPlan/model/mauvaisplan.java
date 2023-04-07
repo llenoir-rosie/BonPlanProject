@@ -21,6 +21,7 @@ public class mauvaisplan {
     @Column 
     private String ville_name;
 
+    
     public String getName() {
         return name;
     }

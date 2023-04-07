@@ -36,7 +36,7 @@ public class CitiesService {
     public void updateCity(cities cityToUpdate) {
         cities cityFromDb = citiesRepository.findByName(cityToUpdate.getName());
         cityFromDb.setName(cityToUpdate.getName());
-        cityFromDb.setDescription("nouvelle description hahaha");
+        cityFromDb.setDescription(cityToUpdate.getDescription());
         cityFromDb.setImage(cityToUpdate.getImage());
         citiesRepository.save(cityFromDb);
         //activityFromDb.updateActivity(act);

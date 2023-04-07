@@ -28,7 +28,7 @@ public class MauvaisPlanService {
 
     public void updateThisMauvaisPlan(mauvaisplan mauvaisplanobj) {
         mauvaisplan mauvaisplanFromDb = mauvaisplanRepository.findById(mauvaisplanobj.getName()).get();
-        mauvaisplanFromDb.setAddress("nouvelle address");
+        mauvaisplanFromDb.setAddress(mauvaisplanobj.getAddress());
         mauvaisplanFromDb.setActivity_type(mauvaisplanobj.getActivity_type());
         mauvaisplanFromDb.setVille_name(mauvaisplanobj.getVille_name());
         mauvaisplanRepository.save(mauvaisplanFromDb);

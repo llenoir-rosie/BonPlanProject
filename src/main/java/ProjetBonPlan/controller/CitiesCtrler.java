@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ProjetBonPlan.model.activity;
@@ -64,8 +65,9 @@ public class CitiesCtrler {
     }
 
     //Update a City (cities.java), return false if the city can't be updated
-    @PutMapping(path="city/update")
-    public void updateCity(cities cityToUpdate) {
+    @PutMapping(path="city/update", consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateCity(@RequestBody cities cityToUpdate) {
         try{
             citiesService.updateCity(cityToUpdate);
         } catch (Exception e) {
