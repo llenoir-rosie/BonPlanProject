@@ -21,6 +21,8 @@ public class bonplan {
     @Column 
     private String ville_name;
 
+    
+
     public String getVille_name() {
         return ville_name;
     }
