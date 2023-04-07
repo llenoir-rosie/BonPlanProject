@@ -60,5 +60,11 @@ public class MauvaisPlanCtrler {
     public void updateMauvaisPlan(mauvaisplan upMauvaisPlan) {
         mauvaisplanService.updateThisMauvaisPlan(upMauvaisPlan);
     }
+
+    @GetMapping(path="/{city}/{activites}/countmauvaisplan", 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer count(@PathVariable ("city") String city, @PathVariable ("activites") String activites){
+        return mauvaisplanService.count(city, activites);
+    }
     
 }

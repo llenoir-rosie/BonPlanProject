@@ -18,7 +18,7 @@ public interface MauvaisPlanRepository extends JpaRepository<mauvaisplan, String
     public List<mauvaisplan> findMauvaisPlan(String city, String activity);
 
     @Modifying
-    @Query("INSERT INTO mauvaisplan (address, name,activity_type,ville_name) values (?1,?2,?3,?4)")
+    @Query("INSERT INTO mauvaisplan (address, name,activity_type,ville_name) values (?2,?1,?3,?4)")
     @Transactional
     public void CreateNewMauvaisPlan(String name, String address, String activity_type, String ville_name);
 
@@ -26,5 +26,8 @@ public interface MauvaisPlanRepository extends JpaRepository<mauvaisplan, String
     @Query("DELETE FROM mauvaisplan WHERE name = ?1")
     @Transactional
     public void DeleteThisMauvaisPlan(String name);
+
+    @Query("SELECT COUNT(*) from mauvaisplan where ville_name=?1 and activity_type=?2")
+    public Integer countbonplan(String city, String activites);
     
 }

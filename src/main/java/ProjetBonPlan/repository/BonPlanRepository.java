@@ -19,7 +19,7 @@ public interface BonPlanRepository extends JpaRepository<bonplan, String>{
     public List<bonplan> findBonPlan(String city, String activity);
 
     @Modifying
-    @Query("INSERT INTO bonplan (address, name,activity_type,ville_name) values (?1,?2,?3,?4)")
+    @Query("INSERT INTO bonplan (address, name,activity_type,ville_name) values (?2,?1,?3,?4)")
     @Transactional
     public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name);
 

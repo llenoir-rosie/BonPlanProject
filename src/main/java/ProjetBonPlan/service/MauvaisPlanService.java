@@ -33,4 +33,8 @@ public class MauvaisPlanService {
         mauvaisplanFromDb.setVille_name(mauvaisplanobj.getVille_name());
         mauvaisplanRepository.save(mauvaisplanFromDb);
     }
+
+    public Integer count(String city, String activites) {
+        return mauvaisplanRepository.countbonplan(city, activites);
+    }
 }
