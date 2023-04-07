@@ -3,6 +3,7 @@ package ProjetBonPlan.controller;
 import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,7 +65,7 @@ public class CitiesCtrler {
 
     //Update a City (cities.java), return false if the city can't be updated
     @PutMapping(path="city/update")
-    public void updateActivity(cities cityToUpdate) {
+    public void updateCity(cities cityToUpdate) {
         try{
             citiesService.updateCity(cityToUpdate);
         } catch (Exception e) {
