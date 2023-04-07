@@ -40,7 +40,7 @@ public class ActivityService {
     public void updateActivity(activity act) {
         activity activityFromDb = activityRepository.findByActivity(act.getName());
         activityFromDb.setName(act.getName());
-        activityFromDb.setDescription("nouvelle description hahaha");
+        activityFromDb.setDescription(act.getDescription());
         activityFromDb.setImage(act.getImage());
         activityRepository.save(activityFromDb);
         //activityFromDb.updateActivity(act);

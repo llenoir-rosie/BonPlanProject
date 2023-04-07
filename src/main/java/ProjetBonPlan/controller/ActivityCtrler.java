@@ -73,15 +73,13 @@ public class ActivityCtrler {
     }
 
     //Update an Activity (activity.java), return false if the activity can't be updated
-    @PutMapping(path="/activity/update")
-    public void updateActivity(activity act) {
+    @PutMapping(path="/activity/update",consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updateActivity(@RequestBody activity act) {
         try{
             activityService.updateActivity(act);
         } catch (Exception e) {
             System.out.println("l activite ne peut pas etre mise à jour");
         }
     }
-
-
-
 }

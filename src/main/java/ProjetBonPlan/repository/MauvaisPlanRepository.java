@@ -26,5 +26,8 @@ public interface MauvaisPlanRepository extends JpaRepository<mauvaisplan, String
     @Query("DELETE FROM mauvaisplan WHERE name = ?1")
     @Transactional
     public void DeleteThisMauvaisPlan(String name);
+
+    @Query("SELECT COUNT(*) from mauvaisplan where ville_name=?1 and activity_type=?2")
+    public Integer countbonplan(String city, String activites);
     
 }
