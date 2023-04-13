@@ -92,8 +92,8 @@ public class ActivityCtrler {
         String act_image = activite.getImage(); //nom de l image stockée dans Telechargements
 
         if (act_image != ""){
-            String src = System.getProperty("user.home") + "\\" + act_image;
-           // String src = "C:/Users/cfavre/Downloads/" + act_image;
+            //String src = System.getProperty("user.home") + "\\" + act_image;
+            String src = "C:/Users/cfavre/Downloads/" + act_image;
             String dest = "C:/Users/cfavre/BonPlanFront/src/assets/img/" + act_image;
             
             System.out.println(src);
