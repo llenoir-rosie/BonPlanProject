@@ -41,12 +41,13 @@ public class CitiesCtrler {
 
     //Create a new city (cities.java), return false if the name already exist
     @PostMapping(path="/city/new")
-        public void createNewCity(String cityname,String description,String image){
-        String villeAajouter="Lille";
-        String DescriptionVille="description de Lille";
-        String ImageVille="../assets/img/lille.jfif";
+        public void createNewCity(@RequestBody cities City){
+        //public void createNewCity(String cityname,String description,String image)
+        String cityName = City.getName();
+        String cityDescription = City.getDescription();
+        String cityImage = City.getImage();
         try{
-            citiesService.createNewCity(villeAajouter,DescriptionVille,ImageVille);
+            citiesService.createNewCity(cityName,cityDescription, cityImage);
         }catch(Exception e){
             System.out.println("Cette ville existe deja dans la base de donnees");
         }
