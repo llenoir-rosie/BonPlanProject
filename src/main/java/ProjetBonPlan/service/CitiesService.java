@@ -17,6 +17,11 @@ public class CitiesService {
         return citiesRepository.findAll();
     }
 
+    public cities getCityByName(String cityname){
+        return citiesRepository.findByName(cityname);
+    }
+    
+
     //renvoie la liste des villes disposant d'une activité précise
     public List<cities> getCitiesbyActivity(String activity){
         return citiesRepository.findByActivityToCity(activity);

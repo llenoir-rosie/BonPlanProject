@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import java.io.* ;
 
+import org.hibernate.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,16 +55,32 @@ public class ActivityCtrler {
     //Create a new activity of type activity, return false if name already exist
     @PostMapping(path="/activity/new", consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createNewActivity(@RequestBody activity activite) throws IOException{
+    public void createNewActivity(@RequestBody activity activite) throws IOException, InterruptedException{
         String act_name = activite.getName();
         String act_description = activite.getDescription();
         String act_image = activite.getImage(); //nom de l image stockée dans Telechargements
 
-        // String src = "C:\\Users\\cfavre\\Downloads" + act_image;
-        // System.out.println(src);
-        // String dest = "C:\\Users\\cfavre\\BonPlanFront\\src\\assets\\img" + act_image;
-        // System.out.println(dest);
-        // Files.move(Paths.get(src), Paths.get(dest));
+        if (act_image != ""){
+            String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
+            String src = "C:/Users/" + user + "/Downloads/" + act_image;
+            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + act_image;
+            File file1 = new File(src);
+            File file2 = new File(dest);
+            while (!file1.exists()){
+                System.out.println("loading file ...");
+                TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
+            }
+            if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
+                Files.move(Paths.get(src), Paths.get(dest));
+            }
+            act_image = "../assets/img/" + act_image;
+            activite.setImage(act_image);
+            System.out.println(act_image);
+
+            Files.delete(Paths.get(src)); //suppr fichier saved by file-saver dans downloads
+        }else{
+            act_image = "";
+        }
 
         try{
             activityService.createNewActivity(act_name, act_image, act_description);
@@ -88,31 +105,20 @@ public class ActivityCtrler {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateActivity(@RequestBody activity activite) throws IOException, InterruptedException {
         String act_name = activite.getName();
-        //String act_description = activite.getDescription();
         String act_image = activite.getImage(); //nom de l image stockée dans Telechargements
-
         if (act_image != ""){
-            //String src = System.getProperty("user.home") + "\\" + act_image;
-            String src = "C:/Users/cfavre/Downloads/" + act_image;
-            String dest = "C:/Users/cfavre/BonPlanFront/src/assets/img/" + act_image;
-            
-            System.out.println(src);
-            
-            //System.out.println(System.getProperty("user.home"));
-
+           String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
+            String src = "C:/Users/" + user + "/Downloads/" + act_image;
+            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + act_image;
             File file1 = new File(src);
-            System.out.println(file1.exists());
             File file2 = new File(dest);
-
             while (!file1.exists()){
                 System.out.println("loading file ...");
                 TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
             }
-            
             if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
                 Files.move(Paths.get(src), Paths.get(dest));
             }
-            
             String UpdatePathImage = "../assets/img/" + act_image;
             activite.setImage(UpdatePathImage);
 

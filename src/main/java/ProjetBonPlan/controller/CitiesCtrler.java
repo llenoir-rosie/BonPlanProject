@@ -1,6 +1,11 @@
 package ProjetBonPlan.controller;
 
-import java.util.List;  
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -41,11 +46,34 @@ public class CitiesCtrler {
 
     //Create a new city (cities.java), return false if the name already exist
     @PostMapping(path="/city/new")
-        public void createNewCity(@RequestBody cities City){
-        //public void createNewCity(String cityname,String description,String image)
+        public void createNewCity(@RequestBody cities City) throws IOException, InterruptedException{
         String cityName = City.getName();
         String cityDescription = City.getDescription();
         String cityImage = City.getImage();
+
+        if (cityImage != ""){
+            String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
+            String src = "C:/Users/" + user + "/Downloads/" + cityImage;
+            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + cityImage;
+            File file1 = new File(src);
+            File file2 = new File(dest);
+
+            while (!file1.exists()){
+                System.out.println("loading file ...");
+                TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
+            }
+            if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
+                Files.move(Paths.get(src), Paths.get(dest));
+            }
+            cityImage = "../assets/img/" + cityImage;
+            City.setImage(cityImage);
+            System.out.println(cityImage);
+
+            Files.delete(Paths.get(src)); //suppr fichier saved by file-saver dans downloads
+        }else{
+            cityImage = "";
+        }
+
         try{
             citiesService.createNewCity(cityName,cityDescription, cityImage);
         }catch(Exception e){
@@ -68,7 +96,32 @@ public class CitiesCtrler {
     //Update a City (cities.java), return false if the city can't be updated
     @PutMapping(path="city/update", consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void updateCity(@RequestBody cities cityToUpdate) {
+    public void updateCity(@RequestBody cities cityToUpdate) throws InterruptedException, IOException {
+        String city_name = cityToUpdate.getName();
+        String city_description = cityToUpdate.getDescription();
+        String city_image = cityToUpdate.getImage();
+
+        if (city_image != ""){
+            String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
+            String src = "C:/Users/" + user + "/Downloads/" + city_image;
+            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + city_image;
+            File file1 = new File(src);
+            File file2 = new File(dest);
+
+            while (!file1.exists()){
+                System.out.println("loading file ...");
+                TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
+            }
+            if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
+                Files.move(Paths.get(src), Paths.get(dest));
+            }
+            city_image = "../assets/img/" + city_image ;
+            cityToUpdate.setImage(city_image);
+            Files.delete(Paths.get(src));
+        }else{
+            cityToUpdate.setImage(citiesService.getCityByName(city_name).getImage());
+        }
+
         try{
             citiesService.updateCity(cityToUpdate);
         } catch (Exception e) {
