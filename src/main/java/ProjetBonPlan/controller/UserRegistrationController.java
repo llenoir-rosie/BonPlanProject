@@ -8,10 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ProjetBonPlan.dto.UserRegistrationDto;
@@ -56,19 +55,9 @@ public class UserRegistrationController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }    
     
-    @PostMapping(path = "/login",    
-    consumes = MediaType.APPLICATION_JSON_VALUE, 
-    produces = MediaType.APPLICATION_JSON_VALUE)
-    public User loginUser(@RequestBody User user) {
-        String tempEmail = user.getEmail();
-        String tempPass = user.getPassword();
-        User userObj = null;
-        if(tempEmail != null && tempPass != null) {
-            userObj = userService.fetchUserByEmailAndPassword(tempEmail, tempPass);
-        }
-        // if(userObj == null) {
-        //     throw new Exception("Bad credential");
-        // }
-        return userObj;
+    @GetMapping(path = "/{username}/Details")
+    public ResponseEntity<User> loginUser(@PathVariable("username") @RequestBody String username) {
+        User userObj = userService.fetchUserByUsername(username);
+        return new ResponseEntity<>(userObj, HttpStatus.CREATED);
      }
 }

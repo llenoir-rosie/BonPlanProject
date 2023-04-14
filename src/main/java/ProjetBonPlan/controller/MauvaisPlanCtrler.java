@@ -68,5 +68,12 @@ public class MauvaisPlanCtrler {
     public Integer count(@PathVariable ("city") String city, @PathVariable ("activites") String activites){
         return mauvaisplanService.count(city, activites);
     }
+
+    //Get All MauvaisPlan of the user
+    @GetMapping(path="/{username}/AllMauvaisPlan")
+    public ResponseEntity<List<mauvaisplan>> getUserMauvaisPlan(@PathVariable("username") String username) {
+        List<mauvaisplan> allMP = mauvaisplanService.getUserMauvaisPlan(username);
+        return new ResponseEntity<>(allMP, HttpStatus.OK);
+        }
     
 }

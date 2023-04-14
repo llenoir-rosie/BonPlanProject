@@ -18,10 +18,13 @@ public interface BonPlanRepository extends JpaRepository<bonplan, String>{
     @Query("FROM bonplan WHERE activity_type = ?2 AND ville_name = ?1")
     public List<bonplan> findBonPlan(String city, String activity);
 
+    @Query("FROM bonplan WHERE user_name = ?1")
+    public List<bonplan> findUserBonPlan(String username);
+    
     @Modifying
-    @Query("INSERT INTO bonplan (address, name,activity_type,ville_name) values (?2,?1,?3,?4)")
+    @Query("INSERT INTO bonplan (address, name,activity_type,ville_name, user_name) values (?2,?1,?3,?4,?5)")
     @Transactional
-    public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name);
+    public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name, String user_name);
 
     @Modifying
     @Query("DELETE FROM bonplan WHERE name = ?1")

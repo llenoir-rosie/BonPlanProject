@@ -41,10 +41,6 @@ public class BonPlanCtrler {
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void postBonPlan(@RequestBody bonplan newBonPlan) {
-        // String nameBP="newBP";
-        // String adressCity="25 rue du beau";
-        // String activityType="foot";
-        // String nameCity = "Grenoble"; 
         bonplanService.createNewBonPlan(newBonPlan);
     }
 
@@ -68,4 +64,11 @@ public class BonPlanCtrler {
     public Integer count(@PathVariable ("city") String city, @PathVariable ("activites") String activites){
         return bonplanService.count(city, activites);
     }
+
+    //Get All BonPlan of the user
+    @GetMapping(path="/{username}/AllBonPlan")
+    public ResponseEntity<List<bonplan>> getUserBonPlan(@PathVariable("username") String username) {
+        List<bonplan> allBP = bonplanService.getUserBonPlan(username);
+        return new ResponseEntity<>(allBP, HttpStatus.OK);
+        }
 }

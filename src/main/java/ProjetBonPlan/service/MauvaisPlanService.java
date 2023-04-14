@@ -18,8 +18,12 @@ public class MauvaisPlanService {
         return mauvaisplanRepository.findMauvaisPlan(city, activity);
     }
 
+    public List<mauvaisplan> getUserMauvaisPlan(String username) {
+        return mauvaisplanRepository.findUserMauvaisPlan(username);
+    }
+
     public void createNewMauvaisPlan(mauvaisplan newMauvaisPlan) {
-        mauvaisplanRepository.CreateNewMauvaisPlan(newMauvaisPlan.getName(), newMauvaisPlan.getAddress(), newMauvaisPlan.getActivity_type(), newMauvaisPlan.getVille_name());
+        mauvaisplanRepository.CreateNewMauvaisPlan(newMauvaisPlan.getName(), newMauvaisPlan.getAddress(), newMauvaisPlan.getActivity_type(), newMauvaisPlan.getVille_name(), newMauvaisPlan.getUser_name());
     }
 
     public void deleteThisMauvaisPlan(String name) {

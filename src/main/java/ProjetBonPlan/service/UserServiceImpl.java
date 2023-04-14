@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
     public User fetchUserByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
     }
+
+    @Override
+    public User fetchUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
