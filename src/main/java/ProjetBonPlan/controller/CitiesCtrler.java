@@ -55,13 +55,10 @@ public class CitiesCtrler {
             String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + cityImage;
             String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + cityImage;
-            File file1 = new File(src);
+            // File file1 = new File(src);
             File file2 = new File(dest);
-
-            while (!file1.exists()){
-                System.out.println("loading file ...");
-                TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
-            }
+            TimeUnit.SECONDS.sleep(1);
+   
             if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
                 Files.move(Paths.get(src), Paths.get(dest));
             }
@@ -98,20 +95,17 @@ public class CitiesCtrler {
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateCity(@RequestBody cities cityToUpdate) throws InterruptedException, IOException {
         String city_name = cityToUpdate.getName();
-        String city_description = cityToUpdate.getDescription();
+        //String city_description = cityToUpdate.getDescription();
         String city_image = cityToUpdate.getImage();
 
         if (city_image != ""){
             String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + city_image;
             String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + city_image;
-            File file1 = new File(src);
+            //File file1 = new File(src);
             File file2 = new File(dest);
+            TimeUnit.SECONDS.sleep(1);
 
-            while (!file1.exists()){
-                System.out.println("loading file ...");
-                TimeUnit.SECONDS.sleep(2); //attendre si le telechargement est long
-            }
             if (!file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
                 Files.move(Paths.get(src), Paths.get(dest));
             }
