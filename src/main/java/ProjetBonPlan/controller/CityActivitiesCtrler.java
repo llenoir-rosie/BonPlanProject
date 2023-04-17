@@ -25,10 +25,6 @@ public class CityActivitiesCtrler {
     public void createNewCityActivity(@RequestBody cityactivities CityActivity) throws Exception{
         String cityname = CityActivity.getCity();
         String activityname = CityActivity.getActivity();
-        // cityname = "Toulouse";
-        // activityname = "Musique";
-        // System.out.println(CityActivity);
-        //System.out.println(cityname + activityname);
         
         if (cityActivitiesService.getCityActivities(cityname,activityname) == null){
             cityActivitiesService.CreateCityActivities(cityname, activityname);
