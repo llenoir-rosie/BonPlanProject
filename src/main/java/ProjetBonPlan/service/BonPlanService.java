@@ -18,8 +18,12 @@ public class BonPlanService {
         return bonplanRepository.findBonPlan(city, activity);
     }
 
+    public List<bonplan> getUserBonPlan(String username) {
+        return bonplanRepository.findUserBonPlan(username);
+    }
+
     public void createNewBonPlan(bonplan newBonPlan) {
-        bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(), newBonPlan.getVille_name());
+        bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(), newBonPlan.getVille_name(), newBonPlan.getUser_name());
     }
 
     public void deleteThisBonPlan(String name) {

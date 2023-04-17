@@ -21,6 +21,8 @@ public class bonplan {
     @Column 
     private String ville_name;
 
+    @Column
+    private String user_name;
     
 
     public String getVille_name() {
@@ -53,5 +55,13 @@ public class bonplan {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }

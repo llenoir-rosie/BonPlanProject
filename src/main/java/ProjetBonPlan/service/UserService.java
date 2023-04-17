@@ -19,6 +19,8 @@ public interface UserService {
 
     User save(UserRegistrationDto registrationDto);
 
+    User fetchUserByUsername(String username);
+
     User fetchUserByEmail(String email);
 
     User fetchUserByEmailAndPassword(String email, String pass);
