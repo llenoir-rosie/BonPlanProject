@@ -38,6 +38,12 @@ public class CitiesCtrler {
         return citiesService.getAllCities();
     }
 
+    //@return a city (cities.java) selected by its props city.name
+    @GetMapping(path="city/{nom}")
+    public cities getCityByName(@PathVariable("nom") String nom){
+        return citiesService.getCityByName(nom);
+    }
+
     //@return all cities which have the activity (activity) (name of the activity in the path)
     @GetMapping(path="villes/{activity}")
     public List<cities> getCitiesbyActivity(@PathVariable("activity") String activity){
