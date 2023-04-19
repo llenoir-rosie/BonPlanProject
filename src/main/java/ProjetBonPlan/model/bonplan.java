@@ -24,6 +24,12 @@ public class bonplan {
     @Column
     private String user_name;
     
+    @Column
+    private Integer note;
+
+    @Column
+    private Integer nb_note;
+
 
     public String getVille_name() {
         return ville_name;
@@ -63,5 +69,21 @@ public class bonplan {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
+    }
+
+    public Integer getNb_note() {
+        return nb_note;
+    }
+
+    public void setNb_note(Integer nb_note) {
+        this.nb_note = nb_note;
     }
 }
