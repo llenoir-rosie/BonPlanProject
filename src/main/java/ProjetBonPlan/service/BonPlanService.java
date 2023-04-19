@@ -23,7 +23,8 @@ public class BonPlanService {
     }
 
     public void createNewBonPlan(bonplan newBonPlan) {
-        bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(), newBonPlan.getVille_name(), newBonPlan.getUser_name());
+        bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(),
+        newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote(), newBonPlan.getNb_note());
     }
 
     public void deleteThisBonPlan(String name) {
@@ -36,10 +37,17 @@ public class BonPlanService {
         bonplanFromDb.setAddress(bonplanobj.getAddress());
         bonplanFromDb.setActivity_type(bonplanobj.getActivity_type());
         bonplanFromDb.setVille_name(bonplanobj.getVille_name());
+        bonplanFromDb.setNote(bonplanobj.getNote());
+        bonplanFromDb.setNb_note(bonplanobj.getNb_note());
         bonplanRepository.save(bonplanFromDb);
     }
 
     public Integer count(String city, String activites) {
         return bonplanRepository.countbonplan(city, activites);
     }
+
+    // public Integer[] getNoteBonPlan(String city, String activity, String name) {
+    //     return bonplanRepository.getNoteBonPlan(city, activity, name);
+    // }
+
 }

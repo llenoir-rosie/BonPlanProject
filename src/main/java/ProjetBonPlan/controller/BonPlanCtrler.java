@@ -41,6 +41,8 @@ public class BonPlanCtrler {
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void postBonPlan(@RequestBody bonplan newBonPlan) {
+        // newBonPlan.setNb_note(0);
+        // newBonPlan.setNote(0);
         bonplanService.createNewBonPlan(newBonPlan);
     }
 
@@ -71,4 +73,11 @@ public class BonPlanCtrler {
         List<bonplan> allBP = bonplanService.getUserBonPlan(username);
         return new ResponseEntity<>(allBP, HttpStatus.OK);
         }
+
+    // // Get note du Bon plan
+    // @GetMapping(path= "/{city}/{activity}/{name}/note")
+    // public Integer[] getNoteBonPlan(@PathVariable("city") String city, @PathVariable("activity") String activity,
+    // @PathVariable("name") String name) {
+    //     return bonplanService.getNoteBonPlan(city, activity, name);
+    //     }
 }
