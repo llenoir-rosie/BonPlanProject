@@ -37,20 +37,6 @@ public class JwtAuthenticationController {
 	@Autowired
 	private JwtUserDetailsService userDetailsService;
 
-	
-
-	// public User loginUser(@RequestBody User user) {
-    //     String tempEmail = user.getEmail();
-    //     String tempPass = user.getPassword();
-    //     User userObj = null;
-    //     if(tempEmail != null && tempPass != null) {
-    //         userObj = userService.fetchUserByEmailAndPassword(tempEmail, tempPass);
-    //     }
-    //     // if(userObj == null) {
-    //     //     throw new Exception("Bad credential");
-    //     // }
-    //     return userObj;
-    //  }
 	@PostMapping(value ="/login",    
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
@@ -65,6 +51,13 @@ public class JwtAuthenticationController {
 
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
+
+	// @PostMapping(value= "/register",    
+    // consumes = MediaType.APPLICATION_JSON_VALUE, 
+    // produces = MediaType.APPLICATION_JSON_VALUE)
+	// public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+	// 	return ResponseEntity.ok(userDetailsService.save(user));
+	// }
 
 	private void authenticate(String username, String password) throws Exception {
 		try {
