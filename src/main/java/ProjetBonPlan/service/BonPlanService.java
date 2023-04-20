@@ -24,7 +24,7 @@ public class BonPlanService {
 
     public void createNewBonPlan(bonplan newBonPlan) {
         bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(),
-        newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote(), newBonPlan.getNb_note());
+        newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote());
     }
 
     public void deleteThisBonPlan(String name) {
@@ -38,7 +38,6 @@ public class BonPlanService {
         bonplanFromDb.setActivity_type(bonplanobj.getActivity_type());
         bonplanFromDb.setVille_name(bonplanobj.getVille_name());
         bonplanFromDb.setNote(bonplanobj.getNote());
-        bonplanFromDb.setNb_note(bonplanobj.getNb_note());
         bonplanRepository.save(bonplanFromDb);
     }
 
