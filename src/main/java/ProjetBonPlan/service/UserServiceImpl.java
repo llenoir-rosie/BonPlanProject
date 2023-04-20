@@ -40,4 +40,18 @@ public class UserServiceImpl implements UserService {
     public User fetchUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    public void updatePassword(User user){
+        User userfromDb = fetchUserByUsername(user.getUsername());
+        userfromDb.setPassword(user.getPassword());
+        userRepository.save(userfromDb);
+    }
+
+    public void updateAccountInfos(User user){
+        User userfromDb=fetchUserByUsername(user.getUsername());
+        userfromDb.setFirstName(user.getFirstName());
+        userfromDb.setLastName(user.getLastName());
+        userfromDb.setEmail(user.getEmail());
+        userRepository.save(userfromDb);
+    }
 }
