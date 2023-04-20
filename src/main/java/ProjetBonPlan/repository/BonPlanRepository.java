@@ -22,10 +22,9 @@ public interface BonPlanRepository extends JpaRepository<bonplan, String>{
     public List<bonplan> findUserBonPlan(String username);
     
     @Modifying
-    @Query("INSERT INTO bonplan (address, name,activity_type, ville_name, user_name, note, nb_note) values (?2,?1,?3,?4,?5,?6,?7)")
+    @Query("INSERT INTO bonplan (address, name,activity_type, ville_name, user_name, note) values (?2,?1,?3,?4,?5,?6)")
     @Transactional
-    public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name, String user_name,
-    Integer note, Integer nb_note);
+    public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name, String user_name, Float[] note);
 
     @Modifying
     @Query("DELETE FROM bonplan WHERE name = ?1")

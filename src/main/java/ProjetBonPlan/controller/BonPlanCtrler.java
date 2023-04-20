@@ -41,7 +41,6 @@ public class BonPlanCtrler {
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
     public void postBonPlan(@RequestBody bonplan newBonPlan) {
-        // newBonPlan.setNb_note(0);
         // newBonPlan.setNote(0);
         bonplanService.createNewBonPlan(newBonPlan);
     }
