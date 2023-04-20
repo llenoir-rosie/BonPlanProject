@@ -25,10 +25,9 @@ public class bonplan {
     private String user_name;
     
     @Column
-    private Integer note;
+    private Float[] note;
 
-    @Column
-    private Integer nb_note;
+
 
 
     public String getVille_name() {
@@ -71,19 +70,12 @@ public class bonplan {
         this.user_name = user_name;
     }
 
-    public Integer getNote() {
+    public Float[] getNote() {
         return note;
     }
 
-    public void setNote(Integer note) {
+    public void setNote(Float[] note) {
         this.note = note;
     }
 
-    public Integer getNb_note() {
-        return nb_note;
-    }
-
-    public void setNb_note(Integer nb_note) {
-        this.nb_note = nb_note;
-    }
 }

@@ -54,7 +54,7 @@ public class WebSecurityConfig {
 		// We don't need CSRF for this example
 		httpSecurity.cors().and().csrf().disable()
 				// dont authenticate this particular request
-				.authorizeHttpRequests().requestMatchers("/login").permitAll()
+				.authorizeHttpRequests().requestMatchers("/login", "/registration").permitAll()
 										.requestMatchers("/cities").permitAll()
 										.requestMatchers("/{city}/activites").permitAll()
 										.requestMatchers("/activities").permitAll()

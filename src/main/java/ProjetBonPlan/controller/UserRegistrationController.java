@@ -39,18 +39,6 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    // @ModelAttribute("user")
-    // public UserRegistrationDto userRegistrationDto() {
-    //     return new UserRegistrationDto();
-    // }
-
-    // @GetMapping(path = "/registration")
-    // public String showRegistrationForm() {  //Model model
-    //     // model.addAttribute("user", new UserRegistrationDto())
-    //     return "registration";
-    // }
-
-
     @PostMapping(path = "/registration", 
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)

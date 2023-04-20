@@ -70,7 +70,7 @@ public class ActivityCtrler {
         if (act_image != ""){
             String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + act_image;
-            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + act_image;
+            String dest = "C:/Users/" + user + "/bonplanfront-app/src/assets/img/" + act_image;
             //File file1 = new File(src);
             File file2 = new File(dest);
             TimeUnit.SECONDS.sleep(1);
@@ -113,7 +113,7 @@ public class ActivityCtrler {
         if (act_image != ""){
            String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + act_image;
-            String dest = "C:/Users/" + user + "/BonPlanFront/src/assets/img/" + act_image;
+            String dest = "C:/Users/" + user + "/bonplanfront-app/src/assets/img/" + act_image;
             //File file1 = new File(src);
             File file2 = new File(dest);
             
