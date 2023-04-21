@@ -1,9 +1,12 @@
 package ProjetBonPlan.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import ProjetBonPlan.model.User;
+import jakarta.transaction.Transactional;
  
  
 @Repository
@@ -18,5 +21,9 @@ public interface UserRepository extends JpaRepository<User, String> {
     // User findByEmail(String email);
  
     // boolean existsByEmail(String email);
+    // @Modifying(clearAutomatically=true, flushAutomatically = true)
+    // @Query("update users set password=?2 where username=?1")
+    // @Transactional
+    // void updatePassword(String username, String password);
  
 }

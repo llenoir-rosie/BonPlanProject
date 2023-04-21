@@ -26,6 +26,11 @@ public class bonplan {
     
     @Column
     private Float[] note;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> backClaire2
 
 
     public String getVille_name() {
@@ -75,4 +80,5 @@ public class bonplan {
     public void setNote(Float[] note) {
         this.note = note;
     }
+
 }
