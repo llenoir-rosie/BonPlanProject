@@ -26,11 +26,8 @@ public class bonplan {
     
     @Column
     private Float[] note;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> backClaire2
 
 
     public String getVille_name() {
