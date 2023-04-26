@@ -27,6 +27,16 @@ public class bonplan {
     @Column
     private Float[] note;
 
+    @Column 
+    private String[] note_user;
+    
+    public String[] getNote_user() {
+        return note_user;
+    }
+
+    public void setNote_user(String[] note_user) {
+        this.note_user = note_user;
+    }
 
     public String getVille_name() {
         return ville_name;

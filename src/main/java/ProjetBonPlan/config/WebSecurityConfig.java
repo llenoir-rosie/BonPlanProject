@@ -56,6 +56,8 @@ public class WebSecurityConfig {
 				// dont authenticate this particular request
 				.authorizeHttpRequests().requestMatchers("/login", "/registration").permitAll()
 										.requestMatchers("/cities").permitAll()
+										.requestMatchers("/city/{city}").permitAll()
+										.requestMatchers("/activity/{activity}").permitAll()
 										.requestMatchers("/{city}/activites").permitAll()
 										.requestMatchers("/activities").permitAll()
 										.requestMatchers("/user").permitAll()
