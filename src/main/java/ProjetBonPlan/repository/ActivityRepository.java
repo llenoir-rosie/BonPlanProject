@@ -40,7 +40,6 @@ public interface ActivityRepository extends JpaRepository<activity, Long>{
     @Query("DELETE FROM activity WHERE name=?1 and ?1 NOT IN (select activity_name FROM cityactivities)")
     @Transactional
     public void DeleteActivity(String name);
-
     
     
 }

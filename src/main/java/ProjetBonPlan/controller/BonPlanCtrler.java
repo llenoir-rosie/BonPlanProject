@@ -1,5 +1,7 @@
 package ProjetBonPlan.controller;
 
+import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,11 @@ public class BonPlanCtrler {
     @DeleteMapping(path= "/{city}/{activity}/{name}")
     public void deleteBonPlan(@PathVariable("name") String name) {
         bonplanService.deleteThisBonPlan(name);
+    }
+
+    @DeleteMapping(path="/deleteAccountwithBP/{username}")
+    public void deleteBPfromUser(@PathVariable("username") String username){
+        bonplanService.deleteBPfromUser(username);
     }
 
     //Update a Bon plan (bonplan.java) embedded in a particular activity (activity.java) of a city (cities.java)

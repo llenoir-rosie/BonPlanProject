@@ -1,5 +1,7 @@
 package ProjetBonPlan.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -26,6 +28,9 @@ public class bonplan {
     
     @Column
     private Float[] note;
+
+    @Column
+    private Float date;
 
 
 
@@ -76,6 +81,14 @@ public class bonplan {
 
     public void setNote(Float[] note) {
         this.note = note;
+    }
+
+    public Float getDate(){
+        return date;
+    }
+
+    public void setDate(Float date){
+        this.date = date;
     }
 
 }
