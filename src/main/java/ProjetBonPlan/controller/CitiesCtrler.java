@@ -60,8 +60,11 @@ public class CitiesCtrler {
         if (cityImage != ""){
             String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + cityImage;
-            String dest = "C:/Users/" + user + "/bonplanfront-app/src/assets/img/" + cityImage;
-            // File file1 = new File(src);
+            // String dest = "../assets/img/"+cityImage;
+
+            File filepath = new File("DemoApplication.java");
+            String path = filepath.getAbsolutePath();
+            String dest = path+cityImage;
             File file2 = new File(dest);
             TimeUnit.SECONDS.sleep(1);
    
@@ -107,7 +110,11 @@ public class CitiesCtrler {
         if (city_image != ""){
             String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
             String src = "C:/Users/" + user + "/Downloads/" + city_image;
-            String dest = "C:/Users/" + user + "/bonplanfront-app/src/assets/img/" + city_image;
+            
+            File filepath = new File("DemoApplication.java");
+            String path = filepath.getAbsolutePath();
+            String dest = path+city_image;
+            
             //File file1 = new File(src);
             File file2 = new File(dest);
             TimeUnit.SECONDS.sleep(1);

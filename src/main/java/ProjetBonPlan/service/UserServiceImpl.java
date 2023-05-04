@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 import ProjetBonPlan.model.Role;
 import ProjetBonPlan.model.User;
 import ProjetBonPlan.dto.UserRegistrationDto;
+import ProjetBonPlan.repository.ActivityRepository;
 import ProjetBonPlan.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private ActivityRepository activityRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         super();
@@ -53,5 +55,9 @@ public class UserServiceImpl implements UserService {
         userfromDb.setLastName(user.getLastName());
         userfromDb.setEmail(user.getEmail());
         userRepository.save(userfromDb);
+    }
+
+    public void UserDelete(String username){
+        userRepository.deleteByUsername(username);
     }
 }
