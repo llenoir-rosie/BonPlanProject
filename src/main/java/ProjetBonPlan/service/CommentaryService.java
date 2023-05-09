@@ -14,9 +14,9 @@ public class CommentaryService {
     @Autowired
     private CommentaryRepository commentaryRepository;
     
-    // public List<commentary> getAllCommentaries() {
-    //     return commentaryRepository.findAllCommentaries();
-    // }
+    public List<commentary> getAllCommentaries() {
+        return commentaryRepository.findAllCommentaries();
+    }
 
     public List<commentary> getCommentariesBp(String bpname) {
         return commentaryRepository.findCommentariesOfBp(bpname);

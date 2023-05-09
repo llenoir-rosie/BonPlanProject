@@ -13,8 +13,8 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface CommentaryRepository extends JpaRepository<commentary, String>{
     
-    // @Query("FROM commentary")
-    // public List<commentary> findAllCommentaries();
+    @Query("FROM commentary")
+    public List<commentary> findAllCommentaries();
 
     @Query("FROM commentary WHERE bpname = ?1")
     public List<commentary> findCommentariesOfBp(String bpname);

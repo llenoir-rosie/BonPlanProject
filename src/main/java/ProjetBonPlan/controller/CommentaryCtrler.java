@@ -26,10 +26,10 @@ public class CommentaryCtrler {
     @Autowired
     private CommentaryService commentaryService;
 
-    // @GetMapping(path = "/commentaries")
-    // public List<commentary> getAllCommentaries() {
-    //     return commentaryService.getAllCommentaries();
-    // }
+    @GetMapping(path = "/commentaries")
+    public List<commentary> getAllCommentaries() {
+        return commentaryService.getAllCommentaries();
+    }
     @GetMapping(path= "/getByBP/commentaries/{bpname}")
     public ResponseEntity<List<commentary>> getBonPlan(@PathVariable("bpname") String bpname) {
         List<commentary> allBPCommentaries = commentaryService.getCommentariesBp(bpname);
