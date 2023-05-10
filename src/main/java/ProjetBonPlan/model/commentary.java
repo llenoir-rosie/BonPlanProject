@@ -17,13 +17,22 @@ public class commentary {
     @Column(name = "username")
     private String username;
 
+    @Column(name= "note")
+    private String note;
+
     @Id
     @Column(name = "commentaries")
     private String commentaries;
 
-
-    
     public commentary() {
+    }
+    
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
     
     public String getBpName() {
