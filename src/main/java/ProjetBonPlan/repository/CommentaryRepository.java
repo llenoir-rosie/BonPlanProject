@@ -26,9 +26,9 @@ public interface CommentaryRepository extends JpaRepository<commentary, String>{
     public commentary findCommentary(String bp_name, String username);
 
     @Modifying
-    @Query("INSERT INTO commentary(bpname, username, commentaries) VALUES (?1,?2,?3)")
+    @Query("INSERT INTO commentary(bpname, username, commentaries, note) VALUES (?1,?2,?3,?4)")
     @Transactional
-    public void createCommentary(String bpname, String username, String commentary);
+    public void createCommentary(String bpname, String username, String commentary, String note);
 
     @Modifying
     @Query("DELETE FROM commentary WHERE bpname = ?1 and username = ?2")

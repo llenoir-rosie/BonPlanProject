@@ -27,7 +27,7 @@ public class CommentaryService {
     }
 
     public void createCommentary(commentary comment) {
-        commentaryRepository.createCommentary(comment.getBpName(), comment.getUserName(), comment.getCommentaries());
+        commentaryRepository.createCommentary(comment.getBpName(), comment.getUserName(), comment.getCommentaries(), comment.getNote());
     }
 
     public void deleteCommentary(commentary comment) {
@@ -40,6 +40,7 @@ public class CommentaryService {
         commentFromDB.setBpName(comment.getBpName());
         commentFromDB.setUserName(comment.getUserName());
         commentFromDB.setCommentaries(comment.getCommentaries());
+        commentFromDB.setNote(comment.getNote());
 
         commentaryRepository.save(commentFromDB);
     }
