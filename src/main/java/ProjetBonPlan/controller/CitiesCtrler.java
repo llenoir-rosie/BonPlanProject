@@ -91,7 +91,7 @@ public class CitiesCtrler {
     //Delete the city, return false if user doesn't have the rights
     @DeleteMapping(path="city/delete")
     public void deleteCity(String name){
-        name = "Lille";
+        // name = "Lille";
         try{
             citiesService.deleteCity(name);
         }catch (Exception e){

@@ -18,8 +18,8 @@ public class CommentaryService {
         return commentaryRepository.findAllCommentaries();
     }
 
-    public List<commentary> getCommentariesBp(String bpname) {
-        return commentaryRepository.findCommentariesOfBp(bpname);
+    public List<commentary> getCommentariesBp(String bpname, String city_name, String activity_name) {
+        return commentaryRepository.findCommentariesOfBp(bpname, city_name, activity_name);
     }
 
     public List<commentary> getCommentariesUser(String username) {
@@ -27,7 +27,7 @@ public class CommentaryService {
     }
 
     public void createCommentary(commentary comment) {
-        commentaryRepository.createCommentary(comment.getBpName(), comment.getUserName(), comment.getCommentaries(), comment.getNote());
+        commentaryRepository.createCommentary(comment.getBpName(), comment.getUserName(), comment.getCommentaries(), comment.getNote(), comment.getCityname(), comment.getActivityname());
     }
 
     public void deleteCommentary(commentary comment) {

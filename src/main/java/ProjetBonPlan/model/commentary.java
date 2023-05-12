@@ -1,32 +1,51 @@
 package ProjetBonPlan.model;
 
+import org.hibernate.annotations.CollectionId;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
-
 @Entity
 @Table(name = "commentary")
 public class commentary {
     
-    @Column(name = "bpname")
+    @Id
     private String bpname;
 
-    @Column(name = "username")
+    @Column
     private String username;
 
-    @Column(name= "note")
+    @Column
     private String note;
 
-    @Id
-    @Column(name = "commentaries")
+    @Column
     private String commentaries;
 
-    public commentary() {
+    @Column(name="city_name")
+    private String city_name;
+
+    @Column(name="activity_name")
+    private String activity_name;
+
+    public String getCityname() {
+        return city_name;
     }
-    
+
+    public void setCityname(String cityname) {
+        this.city_name = cityname;
+    }
+
+    public String getActivityname() {
+        return activity_name;
+    }
+
+    public void setActivityname(String activityname) {
+        this.activity_name = activityname;
+    }
+
     public String getNote() {
         return note;
     }

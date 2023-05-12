@@ -30,9 +30,10 @@ public class CommentaryCtrler {
     public List<commentary> getAllCommentaries() {
         return commentaryService.getAllCommentaries();
     }
-    @GetMapping(path= "/getByBP/commentaries/{bpname}")
-    public ResponseEntity<List<commentary>> getBonPlan(@PathVariable("bpname") String bpname) {
-        List<commentary> allBPCommentaries = commentaryService.getCommentariesBp(bpname);
+
+    @GetMapping(path= "/getByBP/commentaries/{bpname}/{cityname}/{activityname}")
+    public ResponseEntity<List<commentary>> getBonPlan(@PathVariable("bpname") String bpname, @PathVariable("cityname") String city_name, @PathVariable("activityname") String activity_name) {
+        List<commentary> allBPCommentaries = commentaryService.getCommentariesBp(bpname, city_name, activity_name);
         return new ResponseEntity<>(allBPCommentaries, HttpStatus.OK);
         }
 
