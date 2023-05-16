@@ -55,6 +55,8 @@ public class WebSecurityConfig {
 		httpSecurity.cors().and().csrf().disable()
 				// dont authenticate this particular request
 				.authorizeHttpRequests().requestMatchers("/login", "/registration").permitAll()
+										.requestMatchers("/commentaries").permitAll()
+										.requestMatchers("/getByBP/commentaries/{bpname}").permitAll()
 										.requestMatchers("/cities").permitAll()
 										.requestMatchers("/city/{city}").permitAll()
 										.requestMatchers("/activity/{activity}").permitAll()

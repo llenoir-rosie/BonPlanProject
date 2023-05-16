@@ -5,14 +5,13 @@ import jakarta.persistence.Entity;
 // import javax.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-
+import lombok.NoArgsConstructor;
 import jakarta.persistence.Column;
 
 //return class cities definied by name, postcode and description
 
 //@Getter
-// @NoArgsConstructor //constructor with no args
+// @NoArgsConstructor 
 // @AllArgsConstructor //constructor with all args
 @Entity
 @Table(name = "cities")

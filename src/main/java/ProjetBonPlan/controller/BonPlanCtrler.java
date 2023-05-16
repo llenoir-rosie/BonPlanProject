@@ -22,8 +22,6 @@ import ProjetBonPlan.model.bonplan;
 import ProjetBonPlan.service.BonPlanService;
 
 @RestController
-// @RequestMapping("/api")
-//servlet that concern CRUD of cities
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class BonPlanCtrler {
 
