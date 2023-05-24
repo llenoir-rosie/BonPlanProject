@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(UserRegistrationDto registrationDto) {
-        User user = new User(registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getEmail(), registrationDto.getPassword(), registrationDto.getUsername(), "USER");
+        User user = new User(registrationDto.getFirstName(), registrationDto.getLastName(), registrationDto.getEmail(), registrationDto.getPassword(), registrationDto.getUsername(), "USER","../assets/img/default_user.jpg");
         
         return userRepository.save(user);
     }
@@ -37,6 +37,13 @@ public class UserServiceImpl implements UserService {
     public User fetchUserByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
     }
+
+    
+    public String fetchImgByUsername(String username){
+        User user = userRepository.findImgByUsername(username);
+        return user.getImgProfil();
+    }
+
 
     @Override
     public User fetchUserByUsername(String username) {
@@ -59,5 +66,11 @@ public class UserServiceImpl implements UserService {
 
     public void UserDelete(String username){
         userRepository.deleteByUsername(username);
+    }
+
+    public void UpdatePhoto(String imgprofil, String username){
+        User userfromDb = fetchUserByUsername(username);
+        userfromDb.setImgProfil(imgprofil);
+        userRepository.save(userfromDb);
     }
 }

@@ -33,4 +33,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Transactional
     public void deleteByUsername(String username);
 
+    @Query("from User where username = ?1")
+    public User findImgByUsername(String username);
+
 }

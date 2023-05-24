@@ -40,6 +40,9 @@ public class User {
     @Column 
     private String role;
 
+    @Column(name="imgprofil")
+    private String imgProfil;
+
     // @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cascade = CascadeType.ALL
     // @JoinTable(
     //     name = "users_roles", 
@@ -51,13 +54,14 @@ public class User {
     // private Collection<Role> roles;
 
     
-    public User(String firstName, String lastName, String email, String password, String username, String role) {
+    public User(String firstName, String lastName, String email, String password, String username, String role, String imgProfil) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.role = role;
         this.username = username;
+        this.imgProfil = imgProfil;
     }
 
     public User() {
@@ -109,6 +113,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getImgProfil(){
+        return imgProfil;
+    }
+
+    public void setImgProfil(String imgProfil){
+        this.imgProfil = imgProfil;
     }
 
 }

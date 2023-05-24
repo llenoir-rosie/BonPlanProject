@@ -1,6 +1,11 @@
 package ProjetBonPlan.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.rmi.ServerException;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
@@ -60,7 +65,18 @@ public class UserRegistrationController {
         User userObj = userService.fetchUserByUsername(username);
         return new ResponseEntity<>(userObj, HttpStatus.CREATED);
     }
-    
+
+    @GetMapping(path="/User/ImgProfil/{username}")
+    public String getImgProfil(@PathVariable("username") String username){
+        System.out.println(userServiceImpl.fetchImgByUsername(username));
+        return userServiceImpl.fetchImgByUsername(username);
+    }
+
+    @GetMapping(path="/verifyFile/{filename}")
+    public Boolean verifyFile(@PathVariable("filename") String filename){
+        File file = new File(filename);
+        return file.exists();
+    }
 
     // @Transactional
     // @Modifying
@@ -76,8 +92,51 @@ public class UserRegistrationController {
         userServiceImpl.updateAccountInfos(user);
     }
 
+    @PutMapping(path="/updatePhoto/{Photoname}",consumes = MediaType.APPLICATION_JSON_VALUE, 
+    produces = MediaType.APPLICATION_JSON_VALUE)
+    public void updatePhoto(@RequestBody User userDetails, @PathVariable("Photoname") String Photoname) throws InterruptedException, IOException{
+        String user = (((System.getProperty("user.home")).split("Users"))[1]).replace("\\","");
+        String src = "C:/Users/" + user + "/Downloads/" + Photoname;
+        String Username = userDetails.getUsername();
+        
+        File filepath = new File("DemoApplication.java");
+        
+        String path = filepath.getCanonicalPath();
+
+        String CorrectPath = path.substring(0, path.length() - 21);
+        System.out.println("Correct Path : " + CorrectPath);
+
+        System.out.println("Path : "+ path);
+        
+        // String dest = CorrectPath+ "\\profile\\" + Photoname;
+        String dest = "C:/Users/cfavre/BonPlanFront/src/assets/img/profil/" + Photoname;
+        System.out.println("destination : " + dest);
+        // String dest = "C:/Users/cfavre/ImgDatabase/profile/" + Photoname;
+        File file2 = new File(dest);
+        TimeUnit.SECONDS.sleep(1);
+        if (file2.exists()){ //si l image n existe pas dans le dossier image /assets/img, le deplacer
+            Files.delete(Paths.get(dest));
+        }
+        TimeUnit.SECONDS.sleep(1);
+        Files.move(Paths.get(src), Paths.get(dest));
+        String UpdatePathImage = "../assets/img/profil/" + Photoname;
+        File file_delete = new File(src);
+        
+        if (file_delete.exists()){
+            Files.delete(Paths.get(src));
+        }      
+        
+        
+      
+        
+
+        userServiceImpl.UpdatePhoto(UpdatePathImage, Username);
+    }
+
     @DeleteMapping(path="/deleteUser/{username}")
     public void deleteUser(@PathVariable ("username") String username){
         userServiceImpl.UserDelete(username);
     }
+
+    
 }
