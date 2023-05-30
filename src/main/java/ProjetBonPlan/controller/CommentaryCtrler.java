@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ProjetBonPlan.model.commentary;
+import ProjetBonPlan.model.commentaires;
 import ProjetBonPlan.service.CommentaryService;
 
 @RestController
@@ -27,34 +27,36 @@ public class CommentaryCtrler {
     private CommentaryService commentaryService;
 
     @GetMapping(path = "/commentaries")
-    public List<commentary> getAllCommentaries() {
+    public List<commentaires> getAllCommentaries() {
         return commentaryService.getAllCommentaries();
     }
     @GetMapping(path= "/getByBP/commentaries/{bpname}")
-    public ResponseEntity<List<commentary>> getBonPlan(@PathVariable("bpname") String bpname) {
-        List<commentary> allBPCommentaries = commentaryService.getCommentariesBp(bpname);
+    public ResponseEntity<List<commentaires>> getBonPlan(@PathVariable("bpname") String bpname) {
+        List<commentaires> allBPCommentaries = commentaryService.getCommentariesBp(bpname);
         return new ResponseEntity<>(allBPCommentaries, HttpStatus.OK);
         }
 
     @GetMapping(path = "/getByUser/commentaries/{username}")
-    public List<commentary> getCommentariesUser(@PathVariable("username") String username) {
+    public List<commentaires> getCommentariesUser(@PathVariable("username") String username) {
         return commentaryService.getCommentariesUser(username);
     }
 
     @PostMapping(path = "/commentaries/create/{bpname}/{username}", 
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void createCommentary(@RequestBody commentary comment) throws IOException, InterruptedException {
+    public void createCommentary(@RequestBody commentaires comment) throws IOException, InterruptedException {
         // String bpname = comment.getBpName();
         // String username = comment.getUserName();
-        // String commentary = comment.getCommentaries(); 
+        // String commentary = comment.getCommentaries();
+        System.out.println("Object commentaire reçu : ") ;
+        System.out.println(comment.getActivity());
         commentaryService.createCommentary(comment);
     }
 
     @DeleteMapping(path = "/commentaries/delete", 
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void deleteCommentary(@RequestBody commentary comment)  throws IOException, InterruptedException {
+    public void deleteCommentary(@RequestBody commentaires comment)  throws IOException, InterruptedException {
         try{
             commentaryService.deleteCommentary(comment);
         }catch (Exception e){
@@ -65,7 +67,7 @@ public class CommentaryCtrler {
     @PutMapping(path = "/commentaries/update", 
     consumes = MediaType.APPLICATION_JSON_VALUE, 
     produces = MediaType.APPLICATION_JSON_VALUE)
-    public void updateActivity(@RequestBody commentary comment) throws IOException, InterruptedException {
+    public void updateActivity(@RequestBody commentaires comment) throws IOException, InterruptedException {
         commentaryService.updateActivity(comment);
     }
 }

@@ -57,6 +57,14 @@ public class UserRegistrationController {
             }
         }
         User user = userService.save(registrationDto);
+
+        String src="C:/Users/cfavre/BonPlanFront/src/assets/img/defaut.jfif";
+        String dest = "C:/Users/cfavre/BonPlanFront/src/assets/img/profil/" + registrationDto.getUsername() +".jfif";
+        // Files.move(Paths.get(src), Paths.get(dest));
+        File srcFile = new File(src);
+        File destFile = new File(dest);
+        Files.copy(srcFile.toPath(), destFile.toPath());
+
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }    
     
@@ -125,11 +133,6 @@ public class UserRegistrationController {
         if (file_delete.exists()){
             Files.delete(Paths.get(src));
         }      
-        
-        
-      
-        
-
         userServiceImpl.UpdatePhoto(UpdatePathImage, Username);
     }
 
