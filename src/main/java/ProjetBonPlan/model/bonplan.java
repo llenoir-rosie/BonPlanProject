@@ -34,6 +34,9 @@ public class bonplan {
 
     @Column 
     private String[] note_user;
+
+    @Column(name="imagebonplan")
+    private String imagebonplan;
     
     public String[] getNote_user() {
         return note_user;
@@ -99,6 +102,14 @@ public class bonplan {
 
     public void setDate(Float date){
         this.date = date;
+    }
+
+    public String getImageBonPlan(){
+        return imagebonplan;
+    }
+     
+    public void setImageBonPlan(String imageBonPlan){
+        this.imagebonplan = imageBonPlan;
     }
 
 }

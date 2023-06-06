@@ -23,10 +23,10 @@ public interface BonPlanRepository extends JpaRepository<bonplan, String>{
     public List<bonplan> findUserBonPlan(String username);
     
     @Modifying
-    @Query("INSERT INTO bonplan (address, name,activity_type, ville_name, user_name, note, note_user, date) values (?2,?1,?3,?4,?5,?6,?7,?8)")
+    @Query("INSERT INTO bonplan (address, name,activity_type, ville_name, user_name, note, note_user, date, imagebonplan) values (?2,?1,?3,?4,?5,?6,?7,?8,?9)")
     @Transactional
     public void CreateNewBonPlan(String name, String address, String activity_type, String ville_name, String user_name, 
-    Float[] note, String[] note_user, Number date);
+    Float[] note, String[] note_user, Number date, String imagebonplan);
     
     
     // @Query("INSERT INTO bonplan (address, name,activity_type, ville_name, user_name, note, note_user) values (?2,?1,?3,?4,?5,?6,?7)")

@@ -24,7 +24,8 @@ public class BonPlanService {
 
     public void createNewBonPlan(bonplan newBonPlan) {
         bonplanRepository.CreateNewBonPlan(newBonPlan.getName(), newBonPlan.getAddress(), newBonPlan.getActivity_type(),
-        newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote(), newBonPlan.getNote_user(), newBonPlan.getDate());
+        newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote(), newBonPlan.getNote_user(), newBonPlan.getDate(), 
+        newBonPlan.getImageBonPlan());
         // newBonPlan.getVille_name(), newBonPlan.getUser_name(), newBonPlan.getNote(), newBonPlan.getNote_user());
     }
 
@@ -40,6 +41,7 @@ public class BonPlanService {
         bonplanFromDb.setVille_name(bonplanobj.getVille_name());
         bonplanFromDb.setNote(bonplanobj.getNote());
         bonplanFromDb.setNote_user(bonplanobj.getNote_user());
+        bonplanFromDb.setImageBonPlan(bonplanobj.getImageBonPlan());
         bonplanRepository.save(bonplanFromDb);
     }
 
